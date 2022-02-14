@@ -59,7 +59,7 @@ const engravingNames = [
     "Peacemaker",
     "Blessed Aura",
     "Judgment",
-    "Ultimate Skill Taijutsu",
+    "Ultimate Skill: Taijutsu",
     "Shock Training",
     "Demonic Impulse",
     "Perfect Suppression",

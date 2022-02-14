@@ -20,9 +20,10 @@ const defaultSelectedOptions = { formOne: null, formTwo: null }
 
 function App() {
 
-  const [selectedOptions, setSelectedOptions] = useState(defaultSelectedOptions)
-  const [perfectMatchList, setPerfectMatchList] = useState([])
-  const [partialMatchList, setPartialMatchList] = useState([])
+  const [ selectedOptions, setSelectedOptions ] = useState(defaultSelectedOptions)
+  const [ perfectMatchList, setPerfectMatchList ] = useState([])
+  const [ partialMatchList, setPartialMatchList ] = useState([])
+  const [ noMatches, setNoMatches ] = useState(false)
 
   const onChange = (incomingSelected, e) => {
     setSelectedOptions({
@@ -32,26 +33,30 @@ function App() {
   }
 
   const onSubmit = () => {
-
-    console.log(selectedOptions);
-    console.log(popularBuilds);
-    const perfectMatchList = [];
-    const partialMatchList = [];
+    const tempPerfectMatchList = [];
+    const tempPartialMatchList = [];
 
     popularBuilds.map((build) => {
       if (build.build_engravings.includes(selectedOptions.formOne.value) && build.build_engravings.includes(selectedOptions.formTwo.value)) {
-        return perfectMatchList.push(build)
+        return tempPerfectMatchList.push(build)
       } else if (build.build_engravings.includes(selectedOptions.formOne.value) || build.build_engravings.includes(selectedOptions.formTwo.value)) {
-        return partialMatchList.push(build)
+        return tempPartialMatchList.push(build)
       }
     })
-    setPerfectMatchList(perfectMatchList)
-    setPartialMatchList(partialMatchList)
+    setPerfectMatchList(tempPerfectMatchList)
+    setPartialMatchList(tempPartialMatchList)
+    
+    console.log(tempPartialMatchList, tempPerfectMatchList)
+    if (tempPerfectMatchList.length === 0 && tempPartialMatchList.length === 0) {
+      setNoMatches(true)
+    } else {
+      setNoMatches(false)
+    }
   }
 
   return (
     <div className="App">
-      <div >
+      <div className="forms">
         <Select
           options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne"
         />
@@ -72,6 +77,9 @@ function App() {
           partialMatchList.map((build) => {
             return <h3>One Engraving Used In: <span className="partial-match">{build.build_name}</span></h3>
           })
+        }
+        {
+          noMatches ? <h2 className="no-matches">No Matches</h2> : ""
         }
       </div>
     </div>
