@@ -29,7 +29,7 @@ const popular_builds = [
     },
     {
         build_name: "Esoteric Flurry Striker",
-        build_engravings: ["Esoteric Flurry", "Raid Captain", "Keen Blunt Weapon", "Grudge", "Cursed Doll", "Adrenaline"]
+        build_engravings: ["Esoteric Flurry", "Master of Ambush", "Keen Blunt Weapon", "Grudge", "Cursed Doll", "Adrenaline"]
     },
     {
         build_name: "Robust Spirit Soulfist",
@@ -64,7 +64,7 @@ const popular_builds = [
         build_engravings: ["Adrenaline", "Pistoleer", "Keen Blunt Weapon", "Grudge", "Precise Dagger", "Ether Predator"]
     },
     {
-        build_name: "Death Strike + Companion Sharpshooter",
+        build_name: "Death Strike Companion Sharpshooter",
         build_engravings: ["Loyal Companion", "Death Strike", "Increases Mass", "Keen Blunt Weapon", "Grudge", "Hit Master"]
     },
     {
