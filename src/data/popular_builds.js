@@ -88,6 +88,10 @@ const popular_builds = [
         build_engravings: ["Remaining Energy", "Super Charge", "Grudge", "Cursed Doll", "Master of Ambush", "Adrenaline"]
     },
     {
+        build_name: "Surge Deathblade",
+        build_engravings: ["Surge", "Master of Ambush", "Adrenaline", "Sight Focus", "Super Charge", "Grudge", "Cursed Doll"]
+    },
+    {
         build_name: "Perfect Suppression Shadowhunter",
         build_engravings: ["Perfect Suppression", "Raid Captain", "Grudge", "Cursed Doll", "Master of Ambush", "Adrenaline"]
     },

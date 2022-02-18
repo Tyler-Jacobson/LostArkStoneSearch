@@ -1,17 +1,93 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+  padding: 0;
+  border: 0;
+  /* border: 1px solid red; */
+  font-size: 100%;
+	font: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+
 .App {
+  font-family: 'Roboto', sans-serif;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  background-color: black;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 450px;
+}
+
+.nav-links a {
+  width: 30%;
+  padding: 13px;
+  font-size: 16px;
+  color: white;
+  border: 3px solid black;
+}
+
+.nav-links a:hover {
+  border: 3px solid white;
+}
+
+.nav-links span {
+  height: 30px;
+  border: 1px solid white;
+}
+
+.engraving-search-component {
   display: flex;
   text-align: center;
   flex-direction: column;
   align-items: center;
 }
 
-.App h2 {
+.engraving-search-component h2 {
   text-align: left;
 }
 
 .forms {
   margin-top: 20px;
   width: 40%;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.results h2 {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.results h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 12px;
 }
 
 .perfect-match {
@@ -24,4 +100,72 @@
 
 .no-matches {
   color: red;
+}
+
+.builds-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.build-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.build-info {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.engravings-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.engravings-list h3 {
+  min-width: 250px;
+}
+
+.build-container h2 {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.build-container h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 12px;
+}
+
+.saved-builds {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.saved-builds h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.saved-builds h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 5px;
+}
+
+.saved-build-container {
+  margin: 10px;
+}
+
+button {
+  height: 25px;
+  width: 25px;
 }
