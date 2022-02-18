@@ -108,6 +108,11 @@ time, mark, audio, video {
   align-items: center;
 }
 
+.builds-list button {
+  height: 25px;
+  width: 25px;
+}
+
 .build-container {
   display: flex;
   flex-direction: column;
@@ -165,7 +170,3 @@ time, mark, audio, video {
   margin: 10px;
 }
 
-button {
-  height: 25px;
-  width: 25px;
-}
