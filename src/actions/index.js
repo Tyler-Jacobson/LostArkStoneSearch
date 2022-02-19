@@ -6,7 +6,7 @@ export const addSavedBuild = (build) => {
 }
 export const removeSavedBuild = (build) => {
     return {
-        type: "ADD_SAVED_BUILD",
+        type: "REMOVE_SAVED_BUILD",
         payload: build
     }
 }

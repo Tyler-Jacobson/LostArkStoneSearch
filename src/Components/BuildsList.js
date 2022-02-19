@@ -1,7 +1,7 @@
 import popularBuilds from "../data/popular_builds"
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { addSavedBuild } from "../actions";
+import { addSavedBuild, removeSavedBuild } from "../actions";
 
 
 function BuildsList() {
@@ -10,8 +10,14 @@ function BuildsList() {
     const savedBuildsRedux = useSelector(state => state.savedBuildsReducer)
 
     function saveBuild(build) {
-        if (!savedBuildsRedux.includes(build)){
+        if (!savedBuildsRedux.includes(build)) {
             dispatch(addSavedBuild(build))
+        }
+    }
+
+    function removeBuild(build) {
+        if (savedBuildsRedux.includes(build)) {
+            dispatch(removeSavedBuild(build))
         }
     }
 
@@ -23,14 +29,17 @@ function BuildsList() {
                     savedBuildsRedux.map(build => {
                         return (
                             <div className="saved-build-container">
-                                <h2>{build.build_name}</h2>
-                                <div className="saved-engravings-list">
-                                    {
-                                        build.build_engravings.map(engraving => {
-                                            return <h3>{engraving}</h3>
-                                        })
-                                    }
+                                <div className="saved-build">
+                                    <h2>{build.build_name}</h2>
+                                    <div className="saved-engravings-list">
+                                        {
+                                            build.build_engravings.map(engraving => {
+                                                return <h3>{engraving}</h3>
+                                            })
+                                        }
+                                    </div>
                                 </div>
+                                <button onClick={() => removeBuild(build)} className="remove-build-button">-</button>
                             </div>
                         )
                     })

@@ -167,6 +167,19 @@ time, mark, audio, video {
 }
 
 .saved-build-container {
+  display: flex;
+  flex-flow: row wrap;
   margin: 10px;
+  background-color: rgb(198, 210, 218);
+  padding: 15px;
 }
 
+.saved-build {
+  /* margin: 10px; */
+}
+
+.remove-build-button {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+}

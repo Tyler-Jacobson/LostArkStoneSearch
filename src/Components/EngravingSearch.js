@@ -37,8 +37,16 @@ function EngravingSearch() {
         popularBuilds.map((build) => {
             if (build.build_engravings.includes(selectedOptions.formOne.value) && build.build_engravings.includes(selectedOptions.formTwo.value)) {
                 return tempPerfectMatchList.push(build)
-            } else if (build.build_engravings.includes(selectedOptions.formOne.value) || build.build_engravings.includes(selectedOptions.formTwo.value)) {
-                return tempPartialMatchList.push(build)
+            } else if (build.build_engravings.includes(selectedOptions.formOne.value)) {
+                return tempPartialMatchList.push({
+                    ...build,
+                    matchedEngraving: selectedOptions.formOne.value
+                })
+            } else if (build.build_engravings.includes(selectedOptions.formTwo.value)) {
+                return tempPartialMatchList.push({
+                    ...build,
+                    matchedEngraving: selectedOptions.formTwo.value
+                })
             }
         })
         setPerfectMatchList(tempPerfectMatchList)
@@ -73,7 +81,7 @@ function EngravingSearch() {
                 <h2>Partial Matches</h2>
                 {
                     partialMatchList.map((build) => {
-                        return <h3>One Engraving Used In: <span className="partial-match">{build.build_name}</span></h3>
+                        return <h3>{build.matchedEngraving} Used In: <span className="partial-match">{build.build_name}</span></h3>
                     })
                 }
                 {
