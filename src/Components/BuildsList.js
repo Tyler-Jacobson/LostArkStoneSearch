@@ -1,24 +1,26 @@
 import popularBuilds from "../data/popular_builds"
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux"
+import { addSavedBuild } from "../actions";
 
 
 function BuildsList() {
-    const [savedBuilds, setSavedBuilds] = useState([])
+    const dispatch = useDispatch()
 
-    function onClick(build) {
-        if (!savedBuilds.includes(build)) {
-            setSavedBuilds([
-                ...savedBuilds,
-                build
-            ])
+    const savedBuildsRedux = useSelector(state => state.savedBuildsReducer)
+
+    function saveBuild(build) {
+        if (!savedBuildsRedux.includes(build)){
+            dispatch(addSavedBuild(build))
         }
     }
+
 
     return (
         <div className="builds-container">
             <div className="saved-builds">
                 {
-                    savedBuilds.map(build => {
+                    savedBuildsRedux.map(build => {
                         return (
                             <div className="saved-build-container">
                                 <h2>{build.build_name}</h2>
@@ -41,7 +43,7 @@ function BuildsList() {
                             <div className="build-container">
                                 <div className="build-info">
                                     <h2>{build.build_name}</h2>
-                                    <button onClick={() => onClick(build)}>+</button>
+                                    <button onClick={() => saveBuild(build)}>+</button>
                                 </div>
                                 <div className="engravings-list">
                                     {

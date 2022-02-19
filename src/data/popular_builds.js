@@ -109,11 +109,11 @@ const popular_builds = [
     },
     {
         build_name: "Igniter Sorceress",
-        build_engravings: ["Igniter", "Cursed Doll", "Hit Master", "Grudge", "Adrenaline", "All-Out Attack"]
+        build_engravings: ["Igniter", "Cursed Doll", "Hit Master", "Grudge", "Precise Dagger", "All-Out Attack"]
     },
     {
         build_name: "Reflux Sorceress",
-        build_engravings: ["All-Out Attack", "Grudge", "Cursed Doll", "Reflux", "Adrenaline", "Hit Master"]
-    },
+        build_engravings: ["Reflux", "All-Out Attack", "Grudge", "Cursed Doll", "Precise Dagger", "Hit Master"]
+    }
 ]
 export default popular_builds;
