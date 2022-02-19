@@ -37,8 +37,16 @@ function EngravingSearch() {
         popularBuilds.map((build) => {
             if (build.build_engravings.includes(selectedOptions.formOne.value) && build.build_engravings.includes(selectedOptions.formTwo.value)) {
                 return tempPerfectMatchList.push(build)
-            } else if (build.build_engravings.includes(selectedOptions.formOne.value) || build.build_engravings.includes(selectedOptions.formTwo.value)) {
-                return tempPartialMatchList.push(build)
+            } else if (build.build_engravings.includes(selectedOptions.formOne.value)) {
+                return tempPartialMatchList.push({
+                    ...build,
+                    matchedEngraving: selectedOptions.formOne.value
+                })
+            } else if (build.build_engravings.includes(selectedOptions.formTwo.value)) {
+                return tempPartialMatchList.push({
+                    ...build,
+                    matchedEngraving: selectedOptions.formTwo.value
+                })
             }
         })
         setPerfectMatchList(tempPerfectMatchList)
@@ -64,16 +72,16 @@ function EngravingSearch() {
                 <button onClick={onSubmit}>Submit</button>
             </div>
             <div className="results">
-                <h2>Perfect Matches</h2>
+                <h2>Perfect Matches: {perfectMatchList.length}</h2>
                 {
                     perfectMatchList.map((build) => {
-                        return <h3>Both Engravings Used In: <span className="perfect-match">{build.build_name}</span></h3>
+                        return <h3>Both Engravings Used In: <span className="perfect-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
                     })
                 }
-                <h2>Partial Matches</h2>
+                <h2>Partial Matches: {partialMatchList.length}</h2>
                 {
                     partialMatchList.map((build) => {
-                        return <h3>One Engraving Used In: <span className="partial-match">{build.build_name}</span></h3>
+                        return <h3>{build.matchedEngraving} Used In: <span className="partial-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
                     })
                 }
                 {

@@ -36,7 +36,7 @@ time, mark, audio, video {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 450px;
+  width: 500px;
 }
 
 .nav-links a {
@@ -117,12 +117,39 @@ time, mark, audio, video {
   display: flex;
   flex-direction: column;
   width: 40%;
+  margin: 10px;
+  background-color: aliceblue;
+  border-radius: 5px;
 }
 
 .build-info {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
+  flex-flow: row wrap;
+  height: 50px;
+  margin-left: 5px;
+}
+
+.build-info-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.build-container h2 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.build-stats {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.save-build-button {
+  margin-right: 10px;
 }
 
 .engravings-list {
@@ -132,19 +159,10 @@ time, mark, audio, video {
 }
 
 .engravings-list h3 {
-  min-width: 250px;
-}
-
-.build-container h2 {
-  font-size: 25px;
-  font-weight: bold;
-  margin: 20px;
-}
-
-.build-container h3 {
   font-size: 20px;
   font-weight: 700;
   margin: 12px;
+  min-width: 250px;
 }
 
 .saved-builds {
@@ -167,6 +185,37 @@ time, mark, audio, video {
 }
 
 .saved-build-container {
+  display: flex;
+  flex-flow: row wrap;
   margin: 10px;
+  background-color: rgb(198, 210, 218);
+  padding: 15px;
 }
 
+.saved-build {
+  /* margin: 10px; */
+}
+
+.remove-build-button {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+}
+
+.top-engravings-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-engravings-container h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.top-engravings-container h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+}

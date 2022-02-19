@@ -1,34 +1,45 @@
 import popularBuilds from "../data/popular_builds"
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux"
+import { addSavedBuild, removeSavedBuild } from "../actions";
 
 
 function BuildsList() {
-    const [savedBuilds, setSavedBuilds] = useState([])
+    const dispatch = useDispatch()
 
-    function onClick(build) {
-        if (!savedBuilds.includes(build)) {
-            setSavedBuilds([
-                ...savedBuilds,
-                build
-            ])
+    const savedBuildsRedux = useSelector(state => state.savedBuildsReducer)
+
+    function saveBuild(build) {
+        if (!savedBuildsRedux.includes(build)) {
+            dispatch(addSavedBuild(build))
         }
     }
+
+    function removeBuild(build) {
+        if (savedBuildsRedux.includes(build)) {
+            dispatch(removeSavedBuild(build))
+        }
+    }
+
 
     return (
         <div className="builds-container">
             <div className="saved-builds">
                 {
-                    savedBuilds.map(build => {
+                    savedBuildsRedux.map(build => {
                         return (
                             <div className="saved-build-container">
-                                <h2>{build.build_name}</h2>
-                                <div className="saved-engravings-list">
-                                    {
-                                        build.build_engravings.map(engraving => {
-                                            return <h3>{engraving}</h3>
-                                        })
-                                    }
+                                <div className="saved-build">
+                                    <h2>{build.build_name}</h2>
+                                    <div className="saved-engravings-list">
+                                        {
+                                            build.build_engravings.map(engraving => {
+                                                return <h3>{engraving}</h3>
+                                            })
+                                        }
+                                    </div>
                                 </div>
+                                <button onClick={() => removeBuild(build)} className="remove-build-button">-</button>
                             </div>
                         )
                     })
@@ -40,8 +51,12 @@ function BuildsList() {
                         return (
                             <div className="build-container">
                                 <div className="build-info">
-                                    <h2>{build.build_name}</h2>
-                                    <button onClick={() => onClick(build)}>+</button>
+                                    <div className="build-info-title">
+                                        <h2>{build.build_name}</h2>
+                                        <h3 className="build-stats">Primary: {build.primary_stat}</h3>
+                                        <h3 className="build-stats">Secondary: {build.secondary_stat}</h3>
+                                    </div>
+                                    <button className="save-build-button" onClick={() => saveBuild(build)}>+</button>
                                 </div>
                                 <div className="engravings-list">
                                     {
