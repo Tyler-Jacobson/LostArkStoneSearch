@@ -51,8 +51,12 @@ function BuildsList() {
                         return (
                             <div className="build-container">
                                 <div className="build-info">
-                                    <h2>{build.build_name}</h2>
-                                    <button onClick={() => saveBuild(build)}>+</button>
+                                    <div className="build-info-title">
+                                        <h2>{build.build_name}</h2>
+                                        <h3 className="build-stats">Primary: {build.primary_stat}</h3>
+                                        <h3 className="build-stats">Secondary: {build.secondary_stat}</h3>
+                                    </div>
+                                    <button className="save-build-button" onClick={() => saveBuild(build)}>+</button>
                                 </div>
                                 <div className="engravings-list">
                                     {

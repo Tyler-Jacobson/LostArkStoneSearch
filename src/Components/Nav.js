@@ -8,6 +8,8 @@ function Nav() {
             <div className="nav-links">
                 <Link to="/">Engraving Search</Link>
                 <span />
+                <Link to="/top-engravings">Top Engravings</Link>
+                <span />
                 <Link to="/builds-list">Builds</Link>
             </div>
         </div>
