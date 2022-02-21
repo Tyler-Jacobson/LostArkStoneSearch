@@ -154,7 +154,7 @@ time, mark, audio, video {
 
 .engravings-list {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: center;
 }
 
@@ -218,4 +218,40 @@ time, mark, audio, video {
   font-size: 20px;
   font-weight: 700;
   margin-top: 10px;
+}
+
+.prio-0 {
+  background-color: rgba(32, 163, 32, 0.781);
+}
+
+.prio-1 {
+  background-color: rgba(84, 163, 32, 0.781);
+}
+
+.prio-2 {
+  background-color: rgba(113, 163, 32, 0.781);
+}
+
+.prio-3 {
+  background-color: rgba(139, 163, 32, 0.781);
+}
+
+.prio-4 {
+  background-color: rgba(161, 163, 32, 0.781);
+}
+
+.prio-5 {
+  background-color: rgba(163, 143, 32, 0.781);
+}
+
+.prio-6 {
+  background-color: rgba(163, 128, 32, 0.781);
+}
+
+.prio-7 {
+  background-color: rgba(163, 106, 32, 0.781);
+}
+
+.prio-8 {
+  background-color: rgba(172, 58, 23, 0.781);
 }

@@ -9,7 +9,7 @@
 const popular_builds = [
     {
         build_name: "Mayhem Berserker",
-        build_engravings: ["Mayhem", "Master's Tenacity", "Raid Captain", "Keen Blunt Weapon", "Grudge", "Cursed Doll"],
+        build_engravings: ["Mayhem", "Master's Tenacity", "Cursed Doll", "Keen Blunt Weapon", "Raid Captain", "Grudge"],
         primary_stat: "Crit",
         secondary_stat: "Swiftness"
     },

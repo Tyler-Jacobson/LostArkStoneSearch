@@ -21,7 +21,6 @@ function BuildsList() {
         }
     }
 
-
     return (
         <div className="builds-container">
             <div className="saved-builds">
@@ -60,8 +59,8 @@ function BuildsList() {
                                 </div>
                                 <div className="engravings-list">
                                     {
-                                        build.build_engravings.map(engraving => {
-                                            return <h3>{engraving}</h3>
+                                        build.build_engravings.map((engraving, index) => {
+                                            return <h3 className={`prio-${index}`}>{engraving}</h3>
                                         })
                                     }
                                 </div>
