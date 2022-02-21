@@ -40,13 +40,23 @@ function EngravingSearch() {
                 const engravingOneImportance = build.build_engravings.findIndex((e) => e === selectedOptions.formOne.value)
                 const engravingTwoImportance = build.build_engravings.findIndex((e) => e === selectedOptions.formTwo.value)
                 console.log("ENG2IMP", engravingTwoImportance)
-                return tempPerfectMatchList.push({
-                    ...build,
-                    matchedEngravingOne: selectedOptions.formOne.value,
-                    matchedEngravingTwo: selectedOptions.formTwo.value,
-                    engravingPriorityOne: parseInt(engravingOneImportance),
-                    engravingPriorityTwo: parseInt(engravingTwoImportance)
-                })
+                if (engravingOneImportance < engravingTwoImportance) {
+                    return tempPerfectMatchList.push({
+                        ...build,
+                        matchedEngravingOne: selectedOptions.formOne.value,
+                        matchedEngravingTwo: selectedOptions.formTwo.value,
+                        engravingPriorityOne: parseInt(engravingOneImportance),
+                        engravingPriorityTwo: parseInt(engravingTwoImportance)
+                    })
+                } else {
+                    return tempPerfectMatchList.push({
+                        ...build,
+                        matchedEngravingOne: selectedOptions.formTwo.value,
+                        matchedEngravingTwo: selectedOptions.formOne.value,
+                        engravingPriorityOne: parseInt(engravingTwoImportance),
+                        engravingPriorityTwo: parseInt(engravingOneImportance)
+                    })
+                }
 
             } else if (build.build_engravings.includes(selectedOptions.formOne.value)) {
                 const importance = build.build_engravings.findIndex((e) => e === selectedOptions.formOne.value)

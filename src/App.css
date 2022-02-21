@@ -27,7 +27,8 @@ time, mark, audio, video {
 
 .nav-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   height: 60px;
   background-color: black;
 }
@@ -37,6 +38,7 @@ time, mark, audio, video {
   align-items: center;
   justify-content: space-evenly;
   width: 500px;
+  text-align: center;
 }
 
 .nav-links a {
@@ -54,6 +56,26 @@ time, mark, audio, video {
 .nav-links span {
   height: 30px;
   border: 1px solid white;
+}
+
+.discord-link {
+  color: rgb(72, 72, 158);
+}
+
+.discord-link-light {
+  color: rgb(139, 139, 243);
+  font-size: 18px;
+  /* font-weight: 500; */
+}
+
+.discord-shilling {
+  color: white;
+  font-weight: 700;
+  width: 430px;
+}
+
+.nav-spacer {
+  width: 430px;
 }
 
 .engraving-search-component {
@@ -320,15 +342,27 @@ time, mark, audio, video {
 }
 
 .importance-6 {
-  color: rgba(163, 128, 32, 0.781);
+  color: rgb(36, 156, 0);
+  border: 2px solid rgb(42, 180, 0);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0px 0px 20px 2px rgb(42, 180, 0);
 }
 
 .importance-7 {
-  color: rgba(163, 106, 32, 0.781);
+  color: rgb(36, 156, 0);
+  border: 2px solid rgb(42, 180, 0);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0px 0px 20px 2px rgb(42, 180, 0);
 }
 
 .importance-8 {
-  color: rgba(172, 58, 23, 0.781);
+  color: rgb(36, 156, 0);
+  border: 2px solid rgb(42, 180, 0);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0px 0px 20px 2px rgb(42, 180, 0);
 }
 
 .note {
@@ -336,3 +370,4 @@ time, mark, audio, video {
   font-weight: 700;
   margin-top: 10px;
 }
+
