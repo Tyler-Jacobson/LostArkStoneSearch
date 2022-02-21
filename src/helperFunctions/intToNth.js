@@ -1,6 +1,8 @@
 
 function intToNth(number) {
-    if (number === 1) {
+    if (number === 0) {
+        return "Core"
+    } else if (number === 1) {
         return "1st"
     } else if (number === 2) {
         return "2nd"

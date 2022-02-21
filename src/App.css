@@ -79,7 +79,7 @@ time, mark, audio, video {
 }
 
 .results h2 {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: bold;
   margin: 20px;
 }
@@ -90,12 +90,21 @@ time, mark, audio, video {
   margin: 12px;
 }
 
+.perfect-match-engraving {
+  color: rgb(43, 43, 43);
+  text-decoration: underline;
+}
+
 .perfect-match {
-  color: green;
+  color: rgb(0, 126, 0);
+  font-size: 24px;
+  font-weight: 700;
+  /* margin: 12px; */
 }
 
 .partial-match {
-  color: orange;
+  color: rgb(255, 123, 0);
+  text-decoration: underline;
 }
 
 .no-matches {
@@ -106,17 +115,21 @@ time, mark, audio, video {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
-.builds-list button {
-  height: 25px;
-  width: 25px;
+
+
+.builds-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .build-container {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
   margin: 10px;
   background-color: aliceblue;
   border-radius: 5px;
@@ -135,7 +148,7 @@ time, mark, audio, video {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
+  width: 70%;
 }
 
 .build-container h2 {
@@ -150,6 +163,8 @@ time, mark, audio, video {
 
 .save-build-button {
   margin-right: 10px;
+  width: 60px;
+  height: 25px;
 }
 
 .engravings-list {
@@ -254,4 +269,70 @@ time, mark, audio, video {
 
 .prio-8 {
   background-color: rgba(172, 58, 23, 0.781);
+}
+
+.importance-0 {
+  color: rgb(219, 64, 3);
+  border: 2px solid rgb(219, 64, 3);
+  border-radius: 10px;
+  padding: 3px;
+  box-shadow: 0px 0px 20px 2px rgb(219, 64, 3);
+}
+
+.importance-1 {
+  color: rgb(219, 64, 3);
+  border: 2px solid rgb(219, 64, 3);
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0px 0px 20px 2px rgb(219, 64, 3);
+}
+
+.importance-2 {
+  color: rgb(255, 102, 0);
+  border: 2px solid rgba(255, 115, 0, 0.788);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0px 0px 20px 2px rgb(219, 64, 3);
+}
+
+.importance-3 {
+  color: rgb(108, 0, 134);
+  border: 2px solid rgb(108, 0, 134);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0px 0px 20px 2px rgb(108, 0, 134);
+}
+
+.importance-4 {
+  color: rgb(0, 41, 177);
+  border: 2px solid rgb(0, 41, 177);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0px 0px 20px 2px rgb(0, 41, 177);
+}
+
+.importance-5 {
+  color: rgb(36, 156, 0);
+  border: 2px solid rgb(42, 180, 0);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0px 0px 20px 2px rgb(42, 180, 0);
+}
+
+.importance-6 {
+  color: rgba(163, 128, 32, 0.781);
+}
+
+.importance-7 {
+  color: rgba(163, 106, 32, 0.781);
+}
+
+.importance-8 {
+  color: rgba(172, 58, 23, 0.781);
+}
+
+.note {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
 }
