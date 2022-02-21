@@ -6,8 +6,10 @@ const commonEngravings = [
     "Keen Blunt Weapon",
     "Adrenaline",
     "Master of Ambush",
+    "Spirit Absorption",
     "Raid Captain",
     "Hit Master",
+    "Precise Dagger",
     "Awakening"
 ]
 
@@ -35,12 +37,13 @@ function TopEngravings() {
     //     sortable.sort(function (a, b) {
     //         return a[1] - b[1];
     //     });
-    //     console.log(sortable)
+    //     console.log("sortable",sortable)
     // }, [])
 
     return (
         <div className="top-engravings-container">
-            <h1>Most Popular General Engravings</h1>
+            <h2 className="note">Note: 90% of this app has been build based on user suggestions. If you have a suggestion, feel free to join my <a className="discord-link" href="https://discord.gg/x82dcfNcjw" alt="Discord link" target="_blank" rel="noreferrer">Discord</a></h2>
+            <h1>Top 10 Most Popular Engravings</h1>
             {
                 commonEngravings.map((engraving) => {
                     return <h2>{engraving}</h2>

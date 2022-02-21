@@ -3,6 +3,7 @@ import Select from 'react-select';
 import '../App.css';
 import popularBuilds from "../data/popular_builds";
 import engravingsList from "../data/engravings_list";
+import intToNth from "../helperFunctions/intToNth";
 
 function nameToEngravingObject(name) {
     return { label: name, value: name }
@@ -36,19 +37,48 @@ function EngravingSearch() {
 
         popularBuilds.map((build) => {
             if (build.build_engravings.includes(selectedOptions.formOne.value) && build.build_engravings.includes(selectedOptions.formTwo.value)) {
-                return tempPerfectMatchList.push(build)
+                const engravingOneImportance = build.build_engravings.findIndex((e) => e === selectedOptions.formOne.value)
+                const engravingTwoImportance = build.build_engravings.findIndex((e) => e === selectedOptions.formTwo.value)
+                console.log("ENG2IMP", engravingTwoImportance)
+                if (engravingOneImportance < engravingTwoImportance) {
+                    return tempPerfectMatchList.push({
+                        ...build,
+                        matchedEngravingOne: selectedOptions.formOne.value,
+                        matchedEngravingTwo: selectedOptions.formTwo.value,
+                        engravingPriorityOne: parseInt(engravingOneImportance),
+                        engravingPriorityTwo: parseInt(engravingTwoImportance)
+                    })
+                } else {
+                    return tempPerfectMatchList.push({
+                        ...build,
+                        matchedEngravingOne: selectedOptions.formTwo.value,
+                        matchedEngravingTwo: selectedOptions.formOne.value,
+                        engravingPriorityOne: parseInt(engravingTwoImportance),
+                        engravingPriorityTwo: parseInt(engravingOneImportance)
+                    })
+                }
+
             } else if (build.build_engravings.includes(selectedOptions.formOne.value)) {
+                const importance = build.build_engravings.findIndex((e) => e === selectedOptions.formOne.value)
+
                 return tempPartialMatchList.push({
                     ...build,
-                    matchedEngraving: selectedOptions.formOne.value
+                    matchedEngraving: selectedOptions.formOne.value,
+                    engravingPriority: parseInt(importance)
                 })
             } else if (build.build_engravings.includes(selectedOptions.formTwo.value)) {
+                const importance = build.build_engravings.findIndex((e) => e === selectedOptions.formTwo.value)
+
                 return tempPartialMatchList.push({
                     ...build,
-                    matchedEngraving: selectedOptions.formTwo.value
+                    matchedEngraving: selectedOptions.formTwo.value,
+                    engravingPriority: parseInt(importance)
                 })
             }
         })
+        tempPerfectMatchList.sort((a, b) => (a.engravingPriorityOne > b.engravingPriorityOne) ? 1 : -1)
+        tempPartialMatchList.sort((a, b) => (a.engravingPriority > b.engravingPriority) ? 1 : -1)
+
         setPerfectMatchList(tempPerfectMatchList)
         setPartialMatchList(tempPartialMatchList)
 
@@ -62,6 +92,7 @@ function EngravingSearch() {
 
     return (
         <div className="engraving-search-component">
+            <h2 className="note">Note: Even in Tier 1 - Stones with even a single perfect match are almost always worth something on the market!</h2>
             <div className="forms">
                 <Select
                     options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne"
@@ -75,13 +106,21 @@ function EngravingSearch() {
                 <h2>Perfect Matches: {perfectMatchList.length}</h2>
                 {
                     perfectMatchList.map((build) => {
-                        return <h3>Both Engravings Used In: <span className="perfect-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
+                        return <div>
+                            <h3>
+                                <span className="perfect-match-engraving">{build.matchedEngravingOne}</span> is the <span className={`importance-${build.engravingPriorityOne}`}>{intToNth(build.engravingPriorityOne)}</span> {build.engravingPriorityOne === 0 ? "": "priority"} Engraving and <span className="perfect-match-engraving">{build.matchedEngravingTwo}</span> is the <span className={`importance-${build.engravingPriorityTwo}`}>{intToNth(build.engravingPriorityTwo)}</span> {build.engravingPriorityTwo === 0 ? "": "priority"} Engraving for
+                            </h3>
+                            <h3><span className="perfect-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
+                        </div>
                     })
                 }
                 <h2>Partial Matches: {partialMatchList.length}</h2>
                 {
                     partialMatchList.map((build) => {
-                        return <h3>{build.matchedEngraving} Used In: <span className="partial-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
+                        return <div>
+                            <h3>{build.matchedEngraving} is the <span className={`importance-${build.engravingPriority}`}>{intToNth(build.engravingPriority)}</span> {build.engravingPriority === 0 ? "": "priority"} Engraving for</h3>
+                            <h3><span className="partial-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
+                        </div>
                     })
                 }
                 {

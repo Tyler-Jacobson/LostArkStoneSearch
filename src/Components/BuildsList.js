@@ -21,7 +21,6 @@ function BuildsList() {
         }
     }
 
-
     return (
         <div className="builds-container">
             <div className="saved-builds">
@@ -45,6 +44,7 @@ function BuildsList() {
                     })
                 }
             </div>
+            <h2 className="note">Note: Engravings are listed in order that you'll generally want to prioritize obtaining and maxing them</h2>
             <div className="builds-list">
                 {
                     popularBuilds.map(build => {
@@ -56,12 +56,12 @@ function BuildsList() {
                                         <h3 className="build-stats">Primary: {build.primary_stat}</h3>
                                         <h3 className="build-stats">Secondary: {build.secondary_stat}</h3>
                                     </div>
-                                    <button className="save-build-button" onClick={() => saveBuild(build)}>+</button>
+                                    <button className="save-build-button" onClick={() => saveBuild(build)}>Save</button>
                                 </div>
                                 <div className="engravings-list">
                                     {
-                                        build.build_engravings.map(engraving => {
-                                            return <h3>{engraving}</h3>
+                                        build.build_engravings.map((engraving, index) => {
+                                            return <h3 className={`prio-${index}`}>{engraving}</h3>
                                         })
                                     }
                                 </div>
