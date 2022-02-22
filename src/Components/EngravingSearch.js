@@ -4,6 +4,7 @@ import '../App.css';
 import popularBuilds from "../data/popular_builds";
 import engravingsList from "../data/engravings_list";
 import intToNth from "../helperFunctions/intToNth";
+import { useSelector } from "react-redux"
 
 function nameToEngravingObject(name) {
     return { label: name, value: name }
@@ -18,6 +19,8 @@ engravingsList.forEach(engraingName => {
 const defaultSelectedOptions = { formOne: null, formTwo: null }
 
 function EngravingSearch() {
+
+    const darkModeRedux = useSelector(state => state.darkmodeReducer)
 
     const [selectedOptions, setSelectedOptions] = useState(defaultSelectedOptions)
     const [perfectMatchList, setPerfectMatchList] = useState([])
@@ -92,7 +95,7 @@ function EngravingSearch() {
 
     return (
         <div className="engraving-search-component">
-            <h2 className="note">Note: Even in Tier 1 - Stones with even a single perfect match are almost always worth something on the market!</h2>
+            <h2 className="note">Now with Darkmode!</h2>
             <div className="forms">
                 <Select
                     options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne"
@@ -108,7 +111,7 @@ function EngravingSearch() {
                     perfectMatchList.map((build) => {
                         return <div>
                             <h3>
-                                <span className="perfect-match-engraving">{build.matchedEngravingOne}</span> is the <span className={`importance-${build.engravingPriorityOne}`}>{intToNth(build.engravingPriorityOne)}</span> {build.engravingPriorityOne === 0 ? "": "priority"} Engraving and <span className="perfect-match-engraving">{build.matchedEngravingTwo}</span> is the <span className={`importance-${build.engravingPriorityTwo}`}>{intToNth(build.engravingPriorityTwo)}</span> {build.engravingPriorityTwo === 0 ? "": "priority"} Engraving for
+                                <span className={darkModeRedux ? "perfect-match-engraving-darkmode" : "perfect-match-engraving"}>{build.matchedEngravingOne}</span> is the <span className={darkModeRedux ? `importance-${build.engravingPriorityOne} importance-dark` : `importance-${build.engravingPriorityOne}`}>{intToNth(build.engravingPriorityOne)}</span> {build.engravingPriorityOne === 0 ? "": "priority"} Engraving and <span className={darkModeRedux ? "perfect-match-engraving-darkmode" : "perfect-match-engraving"}>{build.matchedEngravingTwo}</span> is the <span className={darkModeRedux ? `importance-${build.engravingPriorityTwo} importance-dark` : `importance-${build.engravingPriorityTwo}`}>{intToNth(build.engravingPriorityTwo)}</span> {build.engravingPriorityTwo === 0 ? "": "priority"} Engraving for
                             </h3>
                             <h3><span className="perfect-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
                         </div>
@@ -118,7 +121,7 @@ function EngravingSearch() {
                 {
                     partialMatchList.map((build) => {
                         return <div>
-                            <h3>{build.matchedEngraving} is the <span className={`importance-${build.engravingPriority}`}>{intToNth(build.engravingPriority)}</span> {build.engravingPriority === 0 ? "": "priority"} Engraving for</h3>
+                            <h3>{build.matchedEngraving} is the <span className={darkModeRedux ? `importance-${build.engravingPriority} importance-dark` : `importance-${build.engravingPriority}`}>{intToNth(build.engravingPriority)}</span> {build.engravingPriority === 0 ? "": "priority"} Engraving for</h3>
                             <h3><span className="partial-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
                         </div>
                     })

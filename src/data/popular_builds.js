@@ -130,7 +130,7 @@ const popular_builds = [
     {
         build_name: "Time To Hunt Gunslinger",
         build_engravings: ["Time To Hunt", "Peacemaker", "Keen Blunt Weapon", "Hit Master", "Adrenaline", "Raid Captain", "Cursed Doll", "Grudge"],
-        primary_stat: "Swiftness",
+        primary_stat: "Crit",
         secondary_stat: "Specialization"
     },
     {

@@ -10,3 +10,9 @@ export const removeSavedBuild = (build) => {
         payload: build
     }
 }
+export const setDarkMode = (state) => {
+    return {
+        type: "SET_DARK_MODE",
+        payload: state
+    }
+}
