@@ -45,7 +45,7 @@ time, mark, audio, video {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  min-height: 60px;
   background-color: black;
 }
 
@@ -473,4 +473,3 @@ time, mark, audio, video {
 .toggle-darkmode-button {
   margin-left: 20px;
 }
-
