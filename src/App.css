@@ -97,16 +97,6 @@ time, mark, audio, video {
   border-bottom: 3px solid rgb(204,214,207); /* toggle */
 }
 
-.nav-links span {
-  height: 30px;
-  border: 1px solid white; /* toggle */
-}
-
-.nav-links-darkmode span {
-  height: 30px;
-  border: 1px solid rgb(204,214,207); /* toggle */
-}
-
 .discord-link {
   color: rgb(72, 72, 158); /* toggle */
 }
