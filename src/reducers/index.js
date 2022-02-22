@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-// import qualifiedReducer from "./qualifiedReducer";
 import savedBuildsReducer from "./savedBuildsReducer"
+import darkmodeReducer from "./darkmodeReducer"
 
 const rootReducer = combineReducers({
-    savedBuildsReducer
-    // qualified: qualifiedReducer
+    savedBuildsReducer,
+    darkmodeReducer
 })
 
 export default rootReducer

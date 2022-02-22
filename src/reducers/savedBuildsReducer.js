@@ -1,4 +1,3 @@
-
 const savedBuildsReducer = (state = [], action) => {
     switch (action.type) {
         case "ADD_SAVED_BUILD": {

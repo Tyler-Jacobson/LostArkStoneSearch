@@ -8,6 +8,7 @@ function BuildsList() {
     const dispatch = useDispatch()
 
     const savedBuildsRedux = useSelector(state => state.savedBuildsReducer)
+    const darkModeRedux = useSelector(state => state.darkmodeReducer)
 
     function saveBuild(build) {
         if (!savedBuildsRedux.includes(build)) {
@@ -27,7 +28,7 @@ function BuildsList() {
                 {
                     savedBuildsRedux.map(build => {
                         return (
-                            <div className="saved-build-container">
+                            <div className={darkModeRedux ? "saved-build-container-darkmode" : "saved-build-container"}>
                                 <div className="saved-build">
                                     <h2>{build.build_name}</h2>
                                     <div className="saved-engravings-list">
@@ -49,7 +50,7 @@ function BuildsList() {
                 {
                     popularBuilds.map(build => {
                         return (
-                            <div className="build-container">
+                            <div className={darkModeRedux ? "build-container-darkmode" : "build-container"} >
                                 <div className="build-info">
                                     <div className="build-info-title">
                                         <h2>{build.build_name}</h2>

@@ -23,6 +23,22 @@ time, mark, audio, video {
 
 .App {
   font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  color: black; /* toggle */
+}
+
+.App-darkmode {
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  color: rgb(232, 232, 233); /* toggle */
+}
+
+.background {
+  background-color: rgb(232, 232, 233); /* toggle */
+}
+
+.darkmode-background {
+  background-color: rgb(54,57,63); /* toggle */
 }
 
 .nav-container {
@@ -33,7 +49,23 @@ time, mark, audio, video {
   background-color: black;
 }
 
+.nav-container-darkmode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background-color: rgb(32,34,37);
+}
+
 .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 500px;
+  text-align: center;
+}
+
+.nav-links-darkmode {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -45,25 +77,42 @@ time, mark, audio, video {
   width: 30%;
   padding: 13px;
   font-size: 16px;
-  color: white;
-  border: 3px solid black;
+  color: white; /* toggle */
+  border-bottom: 3px solid black;
 }
 
-.nav-links a:hover {
-  border: 3px solid white;
+.nav-links-darkmode a {
+  width: 30%;
+  padding: 13px;
+  font-size: 16px;
+  color: rgb(204,214,207); /* toggle */
+  border-bottom: 3px solid rgb(32,34,37);
+}
+
+.nav-link:hover {
+  border-bottom: 3px solid white; /* toggle */
+}
+
+.nav-link-darkmode:hover {
+  border-bottom: 3px solid rgb(204,214,207); /* toggle */
 }
 
 .nav-links span {
   height: 30px;
-  border: 1px solid white;
+  border: 1px solid white; /* toggle */
+}
+
+.nav-links-darkmode span {
+  height: 30px;
+  border: 1px solid rgb(204,214,207); /* toggle */
 }
 
 .discord-link {
-  color: rgb(72, 72, 158);
+  color: rgb(72, 72, 158); /* toggle */
 }
 
 .discord-link-light {
-  color: rgb(139, 139, 243);
+  color: rgb(139, 139, 243); /* toggle */
   font-size: 18px;
   /* font-weight: 500; */
 }
@@ -92,6 +141,14 @@ time, mark, audio, video {
 .forms {
   margin-top: 20px;
   width: 40%;
+  color: black;
+}
+
+.forms-darkmode {
+  margin-top: 20px;
+  width: 40%;
+  color: rgb(232, 232, 233);
+  background-color: rgb(47,49,54);
 }
 
 .results {
@@ -114,6 +171,11 @@ time, mark, audio, video {
 
 .perfect-match-engraving {
   color: rgb(43, 43, 43);
+  text-decoration: underline;
+}
+
+.perfect-match-engraving-darkmode {
+  color: rgb(232, 232, 233);
   text-decoration: underline;
 }
 
@@ -153,7 +215,18 @@ time, mark, audio, video {
   flex-direction: column;
   width: 50%;
   margin: 10px;
-  background-color: aliceblue;
+  background-color: aliceblue; /* toggle ? */
+  border-radius: 5px;
+}
+
+
+
+.build-container-darkmode {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 10px;
+  background-color: rgb(47,49,54); /* toggle ? */
   border-radius: 5px;
 }
 
@@ -199,6 +272,7 @@ time, mark, audio, video {
   font-size: 20px;
   font-weight: 700;
   margin: 12px;
+  padding: 3px;
   min-width: 250px;
 }
 
@@ -226,6 +300,14 @@ time, mark, audio, video {
   flex-flow: row wrap;
   margin: 10px;
   background-color: rgb(198, 210, 218);
+  padding: 15px;
+}
+
+.saved-build-container-darkmode {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px;
+  background-color: rgb(47,49,54);
   padding: 15px;
 }
 
@@ -291,6 +373,14 @@ time, mark, audio, video {
 
 .prio-8 {
   background-color: rgba(172, 58, 23, 0.781);
+}
+
+.prio-9 {
+  background-color: rgba(167, 48, 11, 0.781);
+}
+
+.importance-dark {
+  background-color: rgb(198, 210, 218);
 }
 
 .importance-0 {
@@ -365,9 +455,20 @@ time, mark, audio, video {
   box-shadow: 0px 0px 20px 2px rgb(42, 180, 0);
 }
 
+.importance-9 {
+  color: rgb(36, 156, 0);
+  border: 2px solid rgb(42, 180, 0);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0px 0px 20px 2px rgb(42, 180, 0);
+}
+
 .note {
   font-size: 20px;
   font-weight: 700;
   margin-top: 10px;
 }
 
+.toggle-darkmode-button {
+  margin-left: 20px;
+}
