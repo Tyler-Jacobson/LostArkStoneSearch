@@ -78,7 +78,6 @@ time, mark, audio, video {
   padding: 13px;
   font-size: 16px;
   color: white; /* toggle */
-  border-bottom: 3px solid black;
 }
 
 .nav-links-darkmode a {
@@ -86,7 +85,6 @@ time, mark, audio, video {
   padding: 13px;
   font-size: 16px;
   color: rgb(204,214,207); /* toggle */
-  border-bottom: 3px solid rgb(32,34,37);
 }
 
 .discord-link {
