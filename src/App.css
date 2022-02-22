@@ -45,7 +45,7 @@ time, mark, audio, video {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 60px;
+  min-height: 80px;
   background-color: black;
 }
 
@@ -53,7 +53,7 @@ time, mark, audio, video {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  min-height: 80px;
   background-color: rgb(32,34,37);
 }
 
