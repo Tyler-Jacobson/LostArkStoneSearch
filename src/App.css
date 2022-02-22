@@ -83,7 +83,8 @@ time, mark, audio, video {
 }
 
 .nav-links a:hover{
-  background-color: rgb(92, 92, 92);
+  background-color: #36393f;
+
 }
 
 .nav-links-darkmode a {
@@ -96,7 +97,11 @@ time, mark, audio, video {
 }
 
 .nav-links-darkmode a:hover{
-  background-color: #36393f;
+  background-color: #26282c;
+}
+
+.active-link{
+  background-color: #41464d;
 }
 
 .discord-link {
