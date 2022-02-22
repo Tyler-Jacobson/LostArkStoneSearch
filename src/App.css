@@ -74,7 +74,7 @@ time, mark, audio, video {
 }
 
 .nav-links a {
-  width: 30%;
+  width: 40%;
   padding: 13px;
   font-size: 16px;
   color: white; /* toggle */
@@ -98,6 +98,10 @@ time, mark, audio, video {
 
 .nav-links-darkmode a:hover{
   background-color: #4e545c;
+}
+
+.nav-link{
+  margin: 0 0.2rem;
 }
 
 .active-link{
@@ -469,3 +473,4 @@ time, mark, audio, video {
 .toggle-darkmode-button {
   margin-left: 20px;
 }
+
