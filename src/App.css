@@ -78,13 +78,25 @@ time, mark, audio, video {
   padding: 13px;
   font-size: 16px;
   color: white; /* toggle */
+  border-radius: 7px;
+  transition: all 0.3s ease-out 0s;
+}
+
+.nav-links a:hover{
+  background-color: rgb(92, 92, 92);
 }
 
 .nav-links-darkmode a {
   width: 30%;
   padding: 13px;
   font-size: 16px;
+  border-radius: 7px;
   color: rgb(204,214,207); /* toggle */
+  transition: all 0.3s ease-out 0s;
+}
+
+.nav-links-darkmode a:hover{
+  background-color: #36393f;
 }
 
 .discord-link {
