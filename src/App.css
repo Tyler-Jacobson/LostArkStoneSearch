@@ -45,7 +45,7 @@ time, mark, audio, video {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  min-height: 80px;
   background-color: black;
 }
 
@@ -53,7 +53,7 @@ time, mark, audio, video {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  min-height: 80px;
   background-color: rgb(32,34,37);
 }
 
@@ -74,37 +74,38 @@ time, mark, audio, video {
 }
 
 .nav-links a {
-  width: 30%;
+  width: 40%;
   padding: 13px;
   font-size: 16px;
   color: white; /* toggle */
-  border-bottom: 3px solid black;
+  border-radius: 7px;
+  transition: all 0.3s ease-out 0s;
+}
+
+.nav-links a:hover{
+  background-color: #36393f;
+
 }
 
 .nav-links-darkmode a {
   width: 30%;
   padding: 13px;
   font-size: 16px;
+  border-radius: 7px;
   color: rgb(204,214,207); /* toggle */
-  border-bottom: 3px solid rgb(32,34,37);
+  transition: all 0.3s ease-out 0s;
 }
 
-.nav-link:hover {
-  border-bottom: 3px solid white; /* toggle */
+.nav-links-darkmode a:hover{
+  background-color: #4e545c;
 }
 
-.nav-link-darkmode:hover {
-  border-bottom: 3px solid rgb(204,214,207); /* toggle */
+.nav-link{
+  margin: 0 0.2rem;
 }
 
-.nav-links span {
-  height: 30px;
-  border: 1px solid white; /* toggle */
-}
-
-.nav-links-darkmode span {
-  height: 30px;
-  border: 1px solid rgb(204,214,207); /* toggle */
+.active-link{
+  background-color: #41464d;
 }
 
 .discord-link {
