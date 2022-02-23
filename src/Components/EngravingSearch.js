@@ -98,32 +98,125 @@ function EngravingSearch() {
             <h2 className="note">Now with Darkmode!</h2>
             <div className="forms">
                 <Select
-                    options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne"
+                    options={engravings} 
+                    onChange={(inc, e) => onChange(inc, e)} 
+                    name="formOne"
                 />
                 <Select
-                    options={engravings} onChange={onChange} name="formTwo"
+                    options={engravings} 
+                    onChange={onChange} 
+                    name="formTwo"
                 />
-                <button onClick={onSubmit}>Submit</button>
+                <button 
+                    className="searchBtn"
+                    onClick={onSubmit}
+                >
+                    Search
+                </button>
             </div>
             <div className="results">
-                <h2>Perfect Matches: {perfectMatchList.length}</h2>
+                <h2 style={{textAlign: "center"}}>
+                    {"Perfect Matches: "}
+                        <span style={{color: "#FFD700"}}>
+                            {perfectMatchList.length}
+                        </span>
+                </h2>
                 {
                     perfectMatchList.map((build) => {
-                        return <div>
-                            <h3>
-                                <span className={darkModeRedux ? "perfect-match-engraving-darkmode" : "perfect-match-engraving"}>{build.matchedEngravingOne}</span> is the <span className={darkModeRedux ? `importance-${build.engravingPriorityOne} importance-dark` : `importance-${build.engravingPriorityOne}`}>{intToNth(build.engravingPriorityOne)}</span> {build.engravingPriorityOne === 0 ? "": "priority"} Engraving and <span className={darkModeRedux ? "perfect-match-engraving-darkmode" : "perfect-match-engraving"}>{build.matchedEngravingTwo}</span> is the <span className={darkModeRedux ? `importance-${build.engravingPriorityTwo} importance-dark` : `importance-${build.engravingPriorityTwo}`}>{intToNth(build.engravingPriorityTwo)}</span> {build.engravingPriorityTwo === 0 ? "": "priority"} Engraving for
-                            </h3>
-                            <h3><span className="perfect-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
-                        </div>
+                        return (<table className="engravingsTable">
+                            <thead>
+                                <tr>
+                                    <th colSpan={2}>
+                                        <span className="perfect-match">
+                                            {build.build_name}
+                                        </span>
+                                        <span className="build-stats">
+                                            {` [${build.primary_stat}/${build.secondary_stat}]`}
+                                        </span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Engraving
+                                    </th>
+                                    <th>
+                                        Priority
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span className={darkModeRedux ? "perfect-match-engraving-darkmode" : "perfect-match-engraving"}>
+                                            {build.matchedEngravingOne}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span className={darkModeRedux ? `importance-${build.engravingPriorityOne} importance-dark` : `importance-${build.engravingPriorityOne}`}>
+                                            {intToNth(build.engravingPriorityOne)}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span className={darkModeRedux ? "perfect-match-engraving-darkmode" : "perfect-match-engraving"}>
+                                            {build.matchedEngravingTwo}
+                                        </span> 
+                                    </td>
+                                    <td>
+                                        <span className={darkModeRedux ? `importance-${build.engravingPriorityTwo} importance-dark` : `importance-${build.engravingPriorityTwo}`}>
+                                            {intToNth(build.engravingPriorityTwo)}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>)
                     })
                 }
-                <h2>Partial Matches: {partialMatchList.length}</h2>
+                <h2 style={{textAlign: "center"}}>
+                    {`Partial Matches: `}
+                    <span style={{color: "red"}}>
+                        {partialMatchList.length}
+                    </span>
+                </h2>
                 {
                     partialMatchList.map((build) => {
-                        return <div>
-                            <h3>{build.matchedEngraving} is the <span className={darkModeRedux ? `importance-${build.engravingPriority} importance-dark` : `importance-${build.engravingPriority}`}>{intToNth(build.engravingPriority)}</span> {build.engravingPriority === 0 ? "": "priority"} Engraving for</h3>
-                            <h3><span className="partial-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
-                        </div>
+                        return (
+                        <table className="engravingsTable">
+                            <thead>
+                                <tr>
+                                    <th colSpan={2}>
+                                        <span className="partial-match">
+                                            {build.build_name}
+                                        </span>
+                                        <span className="build-stats">
+                                            {` [${build.primary_stat}/${build.secondary_stat}]`}
+                                        </span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Engraving
+                                    </th>
+                                    <th>
+                                        Priority
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {build.matchedEngraving}
+                                    </td>
+                                    <td>
+                                        <span className={darkModeRedux ? `importance-${build.engravingPriority} importance-dark` : `importance-${build.engravingPriority}`}>
+                                            {intToNth(build.engravingPriority)}
+                                        </span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>)
                     })
                 }
                 {

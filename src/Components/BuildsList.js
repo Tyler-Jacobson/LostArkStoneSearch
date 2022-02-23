@@ -24,6 +24,7 @@ function BuildsList() {
 
     return (
         <div className="builds-container">
+            <h2 className="note">Note: Engravings are listed in order that you'll generally want to prioritize obtaining and maxing them</h2>
             <div className="saved-builds">
                 {
                     savedBuildsRedux.map(build => {
@@ -45,7 +46,6 @@ function BuildsList() {
                     })
                 }
             </div>
-            <h2 className="note">Note: Engravings are listed in order that you'll generally want to prioritize obtaining and maxing them</h2>
             <div className="builds-list">
                 {
                     popularBuilds.map(build => {
