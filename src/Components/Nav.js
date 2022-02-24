@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import '../App.css';
+//import '../App.css';
+import '../css/bootstrap-night.css';
 import { useDispatch, useSelector } from "react-redux"
 import { setDarkMode } from "../actions";
 
@@ -16,17 +17,30 @@ function Nav() {
     }
 
     return (
-        <div className={darkModeRedux ? "nav-container-darkmode" : "nav-container"} >
-            <div className="nav-spacer">
-                <button className="toggle-darkmode-button" onClick={toggleDarkmode}>Toggle Darkmode</button>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Lost Ark Toolkit</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="/">Engraving Search</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="/top-engravings">Top Engravings</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="/builds-list">Builds List</NavLink>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" to="https://discord.gg/x82dcfNcjw">Discord</a>
+                </li>
+              </ul>
             </div>
-            <div className={darkModeRedux ? "nav-links-darkmode" : "nav-links"}>
-                <NavLink className={({isActive}) => handleActiveLink(isActive)} to="/">Engraving Search</NavLink>
-                <NavLink className={({isActive}) => handleActiveLink(isActive)} to="/top-engravings">Top Engravings</NavLink>
-                <NavLink className={({isActive}) => handleActiveLink(isActive)} to="/builds-list">Builds</NavLink>
-            </div>
-            <a className="discord-shilling" href="https://discord.gg/x82dcfNcjw" alt="Discord link" target="_blank" rel="noreferrer">Join my <span className="discord-link-light">Discord</span> if you have feedback or suggestions. If you suggest something it will probably be added</a>
-        </div>
+          </div>
+        </nav>
     )
 }
 export default Nav

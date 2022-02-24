@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from 'react-select';
-import '../App.css';
+//import '../App.css';
+import '../css/bootstrap-night.css';
 import popularBuilds from "../data/popular_builds";
 import engravingsList from "../data/engravings_list";
 import intToNth from "../helperFunctions/intToNth";
@@ -94,29 +95,48 @@ function EngravingSearch() {
     }
 
     return (
-        <div className="engraving-search-component">
-            <h2 className="note">Now with Darkmode!</h2>
-            <div className="forms">
-                <Select
-                    options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne"
-                />
-                <Select
-                    options={engravings} onChange={onChange} name="formTwo"
-                />
-                <button onClick={onSubmit}>Submit</button>
+        <div className="container text-center engraving-search-component">
+            <div className="row m-5 justify-content-center">
+                <div className="col-sm-4 forms">
+                    <h4>Select Your Engravings</h4>
+                    <Select options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne" className="m-3"
+                    />
+                    <Select
+                        options={engravings} onChange={onChange} name="formTwo" className="m-3"
+                    />
+                    <button className="btn btn-danger btn-lg" onClick={onSubmit}>Submit</button>
+                </div>
             </div>
             <div className="results">
                 <h2>Perfect Matches: {perfectMatchList.length}</h2>
+                <div className="row">
                 {
                     perfectMatchList.map((build) => {
-                        return <div>
-                            <h3>
-                                <span className={darkModeRedux ? "perfect-match-engraving-darkmode" : "perfect-match-engraving"}>{build.matchedEngravingOne}</span> is the <span className={darkModeRedux ? `importance-${build.engravingPriorityOne} importance-dark` : `importance-${build.engravingPriorityOne}`}>{intToNth(build.engravingPriorityOne)}</span> {build.engravingPriorityOne === 0 ? "": "priority"} Engraving and <span className={darkModeRedux ? "perfect-match-engraving-darkmode" : "perfect-match-engraving"}>{build.matchedEngravingTwo}</span> is the <span className={darkModeRedux ? `importance-${build.engravingPriorityTwo} importance-dark` : `importance-${build.engravingPriorityTwo}`}>{intToNth(build.engravingPriorityTwo)}</span> {build.engravingPriorityTwo === 0 ? "": "priority"} Engraving for
-                            </h3>
-                            <h3><span className="perfect-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
+                        return <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{build.build_name}</h5>
+                                    <p class="card-text">({build.primary_stat} / {build.secondary_stat})</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                    {build.matchedEngravingOne} 
+                                    <span className="importance-${build.engravingPriorityOne}`}">
+                                        {build.engravingPriorityOne === 0 ? "": "priority"}
+                                    </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                    {build.matchedEngravingTwo}
+                                    <span className="importance-${build.engravingPriorityTwo}`}">
+                                        {build.engravingPriorityTwo === 0 ? "": "priority"}
+                                    </span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     })
                 }
+                </div>
                 <h2>Partial Matches: {partialMatchList.length}</h2>
                 {
                     partialMatchList.map((build) => {

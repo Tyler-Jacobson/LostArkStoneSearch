@@ -23,7 +23,7 @@ function BuildsList() {
     }
 
     return (
-        <div className="builds-container">
+        <div className="container text-center builds-container">
             <div className="saved-builds">
                 {
                     savedBuildsRedux.map(build => {
