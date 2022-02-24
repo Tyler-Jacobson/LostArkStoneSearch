@@ -122,12 +122,14 @@ function EngravingSearch() {
                                     <li class="list-group-item">
                                     {build.matchedEngravingOne} 
                                     <span className="importance-${build.engravingPriorityOne}`}">
+                                        {intToNth(build.engravingPriorityOne)}
                                         {build.engravingPriorityOne === 0 ? "": "priority"}
                                     </span>
                                     </li>
                                     <li class="list-group-item">
                                     {build.matchedEngravingTwo}
                                     <span className="importance-${build.engravingPriorityTwo}`}">
+                                        {intToNth(build.engravingPriorityOne)}
                                         {build.engravingPriorityTwo === 0 ? "": "priority"}
                                     </span>
                                     </li>
