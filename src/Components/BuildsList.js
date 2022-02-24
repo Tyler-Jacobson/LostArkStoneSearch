@@ -23,53 +23,55 @@ function BuildsList() {
     }
 
     return (
-        <div className="builds-container">
-            <h2 className="note">Note: Engravings are listed in order that you'll generally want to prioritize obtaining and maxing them</h2>
-            <div className="saved-builds">
+        <div className="container text-center builds-container">
+            <div className="row saved-builds">
                 {
                     savedBuildsRedux.map(build => {
                         return (
-                            <div className={darkModeRedux ? "saved-build-container-darkmode" : "saved-build-container"}>
-                                <div className="saved-build">
-                                    <h2>{build.build_name}</h2>
-                                    <div className="saved-engravings-list">
+                            <div className="col-md-6 col-lg-4 mb-3 saved-build">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{build.build_name}</h5>
+                                        <button onClick={() => removeBuild(build)} className="btn btn-danger remove-build-button">-</button>
+                                    </div>
+                                    <ul className="list-group list-group-flush">
                                         {
                                             build.build_engravings.map(engraving => {
-                                                return <h3>{engraving}</h3>
+                                                return <li className="list-group-item"><span className="">{engraving}</span></li>
                                             })
                                         }
-                                    </div>
+                                    </ul>
                                 </div>
-                                <button onClick={() => removeBuild(build)} className="remove-build-button">-</button>
                             </div>
                         )
                     })
                 }
             </div>
             <div className="builds-list">
+            <div className="row">
                 {
                     popularBuilds.map(build => {
                         return (
-                            <div className={darkModeRedux ? "build-container-darkmode" : "build-container"} >
-                                <div className="build-info">
-                                    <div className="build-info-title">
-                                        <h2>{build.build_name}</h2>
-                                        <h3 className="build-stats">Primary: {build.primary_stat}</h3>
-                                        <h3 className="build-stats">Secondary: {build.secondary_stat}</h3>
+                            <div className="col-md-6 col-lg-4 mb-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{build.build_name}</h5>
+                                        <p className="card-text">Primary: {build.primary_stat}<br />Secondary: {build.secondary_stat})</p>
+                                        <button className="btn btn-primary save-build-button" onClick={() => saveBuild(build)}>Save</button>
                                     </div>
-                                    <button className="save-build-button" onClick={() => saveBuild(build)}>Save</button>
-                                </div>
-                                <div className="engravings-list">
-                                    {
-                                        build.build_engravings.map((engraving, index) => {
-                                            return <h3 className={`prio-${index}`}>{engraving}</h3>
-                                        })
-                                    }
+                                    <ul className="list-group list-group-flush">
+                                        {
+                                            build.build_engravings.map((engraving, index) => {
+                                                return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span></li>
+                                            })
+                                        }
+                                    </ul>
                                 </div>
                             </div>
                         )
                     })
                 }
+                </div>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import './App.css';
+//import './App.css';
 import EngravingSeach from "./Components/EngravingSearch"
 import BuildsList from "./Components/BuildsList"
 import TopEngravings from "./Components/TopEngravings";
@@ -36,7 +36,7 @@ function App() {
   }, [darkModeRedux])
 
   return (
-    <div className={darkModeRedux ? "App-darkmode darkmode-background":"App background"} >
+    <div className="wrap">
       <Nav />
       <Routes>
         <Route path="/" element={<EngravingSeach />} />
