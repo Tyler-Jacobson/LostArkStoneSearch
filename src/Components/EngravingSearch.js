@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Select from 'react-select';
 //import '../App.css';
 import '../css/bootstrap-night.css';
+import '../css/toolkit.css';
 import popularBuilds from "../data/popular_builds";
 import engravingsList from "../data/engravings_list";
 import intToNth from "../helperFunctions/intToNth";
@@ -112,26 +113,22 @@ function EngravingSearch() {
                 <div className="row">
                 {
                     perfectMatchList.map((build) => {
-                        return <div class="col-sm-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">{build.build_name}</h5>
-                                    <p class="card-text">({build.primary_stat} / {build.secondary_stat})</p>
+                        return <div className="col-md-6 col-lg-4 mb-3">
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">{build.build_name}</h5>
+                                    <p className="card-text">({build.primary_stat} / {build.secondary_stat})</p>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                    {build.matchedEngravingOne} 
-                                    <span className="importance-${build.engravingPriorityOne}`}">
-                                        {intToNth(build.engravingPriorityOne)}
-                                        {build.engravingPriorityOne === 0 ? "": "priority"}
-                                    </span>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item">
+                                    <h4>{build.matchedEngravingOne} <span className={`badge bg-success importance-${build.engravingPriorityOne}`}>
+                                        #{build.engravingPriorityOne}
+                                    </span></h4>
                                     </li>
-                                    <li class="list-group-item">
-                                    {build.matchedEngravingTwo}
-                                    <span className="importance-${build.engravingPriorityTwo}`}">
-                                        {intToNth(build.engravingPriorityOne)}
-                                        {build.engravingPriorityTwo === 0 ? "": "priority"}
-                                    </span>
+                                    <li className="list-group-item">
+                                    <h4>{build.matchedEngravingTwo} <span className={`badge bg-success importance-${build.engravingPriorityTwo}`}>
+                                        #{build.engravingPriorityTwo}
+                                    </span></h4>
                                     </li>
                                 </ul>
                             </div>
@@ -139,15 +136,28 @@ function EngravingSearch() {
                     })
                 }
                 </div>
+                <div className="row">
                 <h2>Partial Matches: {partialMatchList.length}</h2>
                 {
                     partialMatchList.map((build) => {
-                        return <div>
-                            <h3>{build.matchedEngraving} is the <span className={darkModeRedux ? `importance-${build.engravingPriority} importance-dark` : `importance-${build.engravingPriority}`}>{intToNth(build.engravingPriority)}</span> {build.engravingPriority === 0 ? "": "priority"} Engraving for</h3>
-                            <h3><span className="partial-match">{build.build_name}</span><span className="build-stats">({build.primary_stat}/{build.secondary_stat})</span></h3>
+                        return <div className="col-md-6 col-lg-4 mb-3">
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">{build.build_name}</h5>
+                                    <p className="card-text">({build.primary_stat} / {build.secondary_stat})</p>
+                                </div>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item">
+                                        <h4>{build.matchedEngraving} <span className={`badge bg-success importance-${build.engravingPriority}`}>
+                                            #{build.engravingPriority}
+                                        </span></h4>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     })
                 }
+                </div>
                 {
                     noMatches ? <h2 className="no-matches">No Matches</h2> : ""
                 }

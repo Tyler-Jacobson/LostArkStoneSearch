@@ -35,7 +35,7 @@ function Nav() {
                     <NavLink className="nav-link" to="/builds-list">Builds List</NavLink>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" to="https://discord.gg/x82dcfNcjw">Discord</a>
+                    <a className="nav-link" href="https://discord.gg/x82dcfNcjw">Discord</a>
                 </li>
               </ul>
             </div>
