@@ -140,22 +140,32 @@ time, mark, audio, video {
 }
 
 .forms {
-  margin-top: 20px;
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  min-width: 360px;
+  gap: 0.15rem;
+
   color: black;
 }
 
 .forms-darkmode {
-  margin-top: 20px;
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  min-width: 360px;
+  gap: 0.15rem;
+  
   color: rgb(232, 232, 233);
   background-color: rgb(47,49,54);
+}
+
+.searchBtn {
+  outline: none;
+  font-weight: bold;
 }
 
 .results {
   display: flex;
   flex-direction: column;
-  align-items: left;
 }
 
 .results h2 {
@@ -189,21 +199,11 @@ time, mark, audio, video {
 
 .partial-match {
   color: rgb(255, 123, 0);
-  text-decoration: underline;
 }
 
 .no-matches {
   color: red;
 }
-
-.builds-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-
 
 .builds-container {
   display: flex;
@@ -211,50 +211,71 @@ time, mark, audio, video {
   align-items: center;
 }
 
+.builds-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
 .build-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: 10px;
+  box-sizing: border-box;
+  padding: 1rem;
+  gap: 0.75rem;
+  border-radius: 2%;
+  flex-basis: 25%;
+
   background-color: aliceblue; /* toggle ? */
-  border-radius: 5px;
 }
-
-
 
 .build-container-darkmode {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: 10px;
+  box-sizing: border-box;
+  padding: 1rem;
+  gap: 0.75rem;
+  border-radius: 2%;
+  flex-basis: 25%;
+
   background-color: rgb(47,49,54); /* toggle ? */
-  border-radius: 5px;
 }
 
 .build-info {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  flex-flow: row wrap;
-  height: 50px;
-  margin-left: 5px;
+  gap: 0.5rem;
 }
 
 .build-info-title {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 70%;
+  flex-direction: column;
+  justify-self: center;
+  gap: 0.5rem;
 }
 
+.build-info-title h2 {
+  color: rgb(255, 123, 0);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.build-info-title h3 {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+
 .build-container h2 {
-  font-size: 25px;
+  font-size: 26px;
   font-weight: bold;
 }
 
 .build-stats {
-  font-size: 17px;
-  font-weight: 500;
+  font-size: small;
 }
 
 .save-build-button {
@@ -265,15 +286,15 @@ time, mark, audio, video {
 
 .engravings-list {
   display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.25rem;
 }
 
 .engravings-list h3 {
   font-size: 20px;
   font-weight: 700;
-  margin: 12px;
-  padding: 3px;
+  padding: 0.2rem;
   min-width: 250px;
 }
 
@@ -467,9 +488,19 @@ time, mark, audio, video {
 .note {
   font-size: 20px;
   font-weight: 700;
-  margin-top: 10px;
+  margin: 12px auto;
 }
 
 .toggle-darkmode-button {
   margin-left: 20px;
+}
+
+.engravingsTable {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.engravingsTable th, .engravingsTable td {
+  padding: 0.5rem;
 }
