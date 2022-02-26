@@ -16,3 +16,9 @@ export const setDarkMode = (state) => {
         payload: state
     }
 }
+export const setSearchBuildsForm = (state) => {
+    return {
+        type: "SET_SEARCH_BUILDS_FORM",
+        payload: state
+    }
+}

@@ -105,7 +105,7 @@ function EngravingSearch() {
                     <Select
                         options={engravings} onChange={onChange} name="formTwo" className="m-3"
                     />
-                    <button className="btn btn-danger btn-lg" onClick={onSubmit}>Submit</button>
+                    <button className="btn btn-primary btn-lg" onClick={onSubmit}>Submit</button>
                 </div>
             </div>
             <div className="results">

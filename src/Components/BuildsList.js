@@ -1,7 +1,7 @@
 import popularBuilds from "../data/popular_builds"
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { addSavedBuild, removeSavedBuild } from "../actions";
+import { addSavedBuild, removeSavedBuild, setSearchBuildsForm } from "../actions";
 
 
 function BuildsList() {
@@ -9,6 +9,7 @@ function BuildsList() {
 
     const savedBuildsRedux = useSelector(state => state.savedBuildsReducer)
     const darkModeRedux = useSelector(state => state.darkmodeReducer)
+    const searchBuildsRedux = useSelector(state => state.setSearchBuildsForm)
 
     function saveBuild(build) {
         if (!savedBuildsRedux.includes(build)) {
@@ -22,9 +23,13 @@ function BuildsList() {
         }
     }
 
+    useEffect(() => {
+        console.log(searchBuildsRedux)
+    }, [searchBuildsRedux])
+
     return (
-        <div className="container text-center builds-container mt-5">
-            <div className="row saved-builds">
+        <div className="container text-center builds-container mt-3">
+            <div className="row saved-builds mb-3">
                 {
                     savedBuildsRedux.map(build => {
                         return (
@@ -49,12 +54,15 @@ function BuildsList() {
                 }
             </div>
             {
-                savedBuildsRedux.length === 0 ? "" : <hr className="border-2 border-top mb-4"></hr>
+                savedBuildsRedux.length === 0 ? "" : <hr className="border-2 border-top m-2 mb-4"></hr>
             }
-            <div className="builds-list">
+            <div className="justify-content-center d-lg-flex">
+                <input className="form-control w-50 mb-4" type="text" placeholder="Search Builds" value={searchBuildsRedux} onChange={(e) => dispatch(setSearchBuildsForm(e.target.value))}></input>
+            </div>
+            <div className="builds-list ">
                 <div className="row">
                     {
-                        popularBuilds.map(build => {
+                        searchBuildsRedux.length === 0 ? popularBuilds.map(build => {
                             return (
                                 <div className="col-md-6 col-lg-4 mb-3">
                                     <div className="card">
@@ -73,7 +81,30 @@ function BuildsList() {
                                     </div>
                                 </div>
                             )
+                        }) :
+                        popularBuilds.map(build => {
+                            if (build.build_name.toUpperCase().includes(searchBuildsRedux.toUpperCase())) {
+                                return (
+                                    <div className="col-md-6 col-lg-4 mb-3">
+                                        <div className="card">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{build.build_name}</h5>
+                                                <p className="card-text">Primary: {build.primary_stat}<br />Secondary: {build.secondary_stat}</p>
+                                                <button className="btn btn-primary save-build-button" onClick={() => saveBuild(build)}>Save</button>
+                                            </div>
+                                            <ul className="list-group list-group-flush">
+                                                {
+                                                    build.build_engravings.map((engraving, index) => {
+                                                        return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span></li>
+                                                    })
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                )
+                            }
                         })
+// build.build_name.includes(searchBuildsRedux)
                     }
                 </div>
             </div>
