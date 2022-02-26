@@ -25,6 +25,12 @@ function App() {
       const darkMode = JSON.parse(localStorage.getItem("darkMode"))
       dispatch(setDarkMode(darkMode))
     }
+
+    // var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    // var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    //   return new bootstrap.Tooltip(tooltipTriggerEl)
+    // })
+
   }, [])
 
   useEffect(() => {
