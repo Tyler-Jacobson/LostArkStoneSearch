@@ -2,6 +2,10 @@
 	color:#000;
 }
 
+/* * {
+	border: 1px solid red;
+} */
+
 .importance {
 	background-color: rgb(83, 168, 57);
 }
@@ -24,4 +28,10 @@
   
 .importance-4 {
 	background-color: rgb(40, 75, 190);
+}
+
+@media (min-width: 576px) {
+	.forms {
+		width: 400px;
+	}
 }

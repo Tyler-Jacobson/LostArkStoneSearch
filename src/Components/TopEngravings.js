@@ -1,6 +1,9 @@
 import popular_builds from "../data/popular_builds";
 import engravings_list from "../data/engravings_list"
 import { useState, useEffect } from "react";
+
+
+
 const commonEngravings = [
     "Grudge",
     "Cursed Doll",
@@ -16,11 +19,11 @@ const commonEngravings = [
 
 function TopEngravings() {
 
-    const [ bestEngravings, setBestEngravings ] = useState([])
-    const [ worstEngravings, setWorstEngravings ] = useState([])
+    const [bestEngravings, setBestEngravings] = useState([])
+    const [worstEngravings, setWorstEngravings] = useState([])
 
     useEffect(() => {
-        const buildsObj = { }
+        const buildsObj = {}
 
         popular_builds.forEach((build) => {
             build.build_engravings.forEach((engraving) => {
@@ -60,7 +63,7 @@ function TopEngravings() {
         })
         // console.log(unpopularEngravings)
 
-        
+
         setBestEngravings(sortableTopEngravings.slice(0, 10))
         setWorstEngravings(unpopularEngravings)
     }, [])
@@ -72,7 +75,7 @@ function TopEngravings() {
             <ul className="col-md-6 list-group">
                 {
                     bestEngravings.map((engraving) => {
-                        return <li className="list-group-item">{engraving[0]}</li>
+                        return <li className="list-group-item" title="test">{engraving[0]}</li>
                     })
                 }
             </ul>

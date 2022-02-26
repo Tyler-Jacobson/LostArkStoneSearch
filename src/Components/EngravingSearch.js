@@ -98,12 +98,12 @@ function EngravingSearch() {
     return (
         <div className="container text-center engraving-search-component">
             <div className="row m-5 justify-content-center">
-                <div className="col-sm-4 forms">
+                <div className="col-sm-4 forms container-fluid">
                     <h4>Select Your Engravings</h4>
-                    <Select options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne" className="m-3"
+                    <Select options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne" className="m-3 form-dropdown"
                     />
                     <Select
-                        options={engravings} onChange={onChange} name="formTwo" className="m-3"
+                        options={engravings} onChange={onChange} name="formTwo" className="m-3 form-dropdown"
                     />
                     <button className="btn btn-primary btn-lg" onClick={onSubmit}>Submit</button>
                 </div>

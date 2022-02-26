@@ -2,7 +2,15 @@ import popularBuilds from "../data/popular_builds"
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { addSavedBuild, removeSavedBuild, setSearchBuildsForm } from "../actions";
+import { Tooltip, OverlayTrigger } from "react-bootstrap";
 
+const endGameEngravings = ["Grudge", "Cursed Doll"]
+
+const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      This Engraving is generally considered low priority for tier-1 and tier-2 content, but becomes best in slot at end game
+    </Tooltip>
+);
 
 function BuildsList() {
     const dispatch = useDispatch()
@@ -43,7 +51,11 @@ function BuildsList() {
                                     <ul className="list-group list-group-flush">
                                         {
                                             build.build_engravings.map(engraving => {
-                                                return <li className="list-group-item"><span className="">{engraving}</span></li>
+                                                if (!endGameEngravings.includes(engraving)) {
+                                                    return <li className="list-group-item">{engraving}</li>
+                                                } else {
+                                                    return <li className="list-group-item">{engraving}<OverlayTrigger placement="right" delay={{ show: 0, hide: 200 }} overlay={renderTooltip}><span> 🛈</span></OverlayTrigger></li>
+                                                }
                                             })
                                         }
                                     </ul>
@@ -56,7 +68,7 @@ function BuildsList() {
             {
                 savedBuildsRedux.length === 0 ? "" : <hr className="border-2 border-top m-2 mb-4"></hr>
             }
-            <div className="justify-content-center d-lg-flex">
+            <div className="d-flex justify-content-center" >
                 <input className="form-control w-50 mb-4" type="text" placeholder="Search Builds" value={searchBuildsRedux} onChange={(e) => dispatch(setSearchBuildsForm(e.target.value))}></input>
             </div>
             <div className="builds-list ">
@@ -74,7 +86,11 @@ function BuildsList() {
                                         <ul className="list-group list-group-flush">
                                             {
                                                 build.build_engravings.map((engraving, index) => {
-                                                    return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span></li>
+                                                    if (!endGameEngravings.includes(engraving)) {
+                                                        return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span></li>
+                                                    } else {
+                                                        return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span><OverlayTrigger placement="right" delay={{ show: 0, hide: 200 }} overlay={renderTooltip}><span> 🛈</span></OverlayTrigger></li>
+                                                    }
                                                 })
                                             }
                                         </ul>
@@ -95,7 +111,12 @@ function BuildsList() {
                                             <ul className="list-group list-group-flush">
                                                 {
                                                     build.build_engravings.map((engraving, index) => {
-                                                        return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span></li>
+                                                        if (!endGameEngravings.includes(engraving)) {
+                                                            return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span></li>
+                                                        } else {
+                                                            return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span><OverlayTrigger placement="right" delay={{ show: 0, hide: 200 }} overlay={renderTooltip}><span> 🛈</span></OverlayTrigger></li>
+                                                        }
+                                                        
                                                     })
                                                 }
                                             </ul>
@@ -104,7 +125,6 @@ function BuildsList() {
                                 )
                             }
                         })
-// build.build_name.includes(searchBuildsRedux)
                     }
                 </div>
             </div>
