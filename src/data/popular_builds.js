@@ -17,7 +17,7 @@ const popular_builds = [
         build_name: "Technique Berserker",
         build_engravings: ["Berserker's Technique", "Master of Ambush", "Awakening", "Spirit Absorption", "Raid Captain", "Keen Blunt Weapon", "Super Charge", "Grudge", "Cursed Doll"],
         primary_stat: "Specialization",
-        secondary_stat: "Crit/Swiftness"
+        secondary_stat: "Crit | Swiftness"
     },
     {
         build_name: "Blue Warlord Gunlancer",
@@ -53,7 +53,7 @@ const popular_builds = [
         build_name: "Esoteric Flurry Striker",
         build_engravings: ["Esoteric Flurry", "Master of Ambush", "Keen Blunt Weapon", "Adrenaline", "Spirit Absorption", "Cursed Doll", "Increases Mass", "Grudge"],
         primary_stat: "Swiftness",
-        secondary_stat: "Crit/Specialization"
+        secondary_stat: "Crit | Specialization"
     },
     {
         build_name: "Robust Spirit Soulfist",
