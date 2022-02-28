@@ -13,7 +13,6 @@ This app was initally build to solve a single, simple problem, but has expanded 
 If you'd like to make a suggestion, or create a pull request and add your own work to the project, please join our [Discord](https://discord.com/invite/x82dcfNcjw). This is where all discussion and planning for the project takes place.
 
 ## Credits
-
 ### Countless people have made great suggestions that have massively improved the app. I want to specifically thank a few people from the Discord who have made especially large contributions
 
 Thanks to @hopesix for refactoring the entire app in to Bootstrap 5
