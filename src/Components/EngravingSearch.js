@@ -36,9 +36,7 @@ function EngravingSearch() {
         })
     }
     
-    useEffect(
-        () => {
-            console.log(selectedOptions)
+    useEffect(() => {
             if (selectedOptions.formOne && selectedOptions.formOne.value  && selectedOptions.formTwo && selectedOptions.formTwo.value){
                 onSubmit()
             }
