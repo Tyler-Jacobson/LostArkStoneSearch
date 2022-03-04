@@ -6,7 +6,7 @@ https://engravingcalculator.netlify.app/
 
 ## Goals of this project
 
-The goal of this project is to make complex and obtuse information about the game Lost Ark available to Lost Ark players in a way that is concise and easy to understand.
+The goal of this project is to make complex and obtuse information about the game Lost Ark available to users in a way that is concise and easy to understand.
 
 ## How goals are set
 
