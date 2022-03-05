@@ -35,6 +35,14 @@ function EngravingSearch() {
             [e.name]: incomingSelected
         })
     }
+    
+    useEffect(() => {
+            if (selectedOptions.formOne && selectedOptions.formOne.value  && selectedOptions.formTwo && selectedOptions.formTwo.value){
+                onSubmit()
+            }
+        },
+        [selectedOptions]
+    )
 
     const onSubmit = () => {
         const tempPerfectMatchList = [];
@@ -100,12 +108,12 @@ function EngravingSearch() {
             <div className="row m-5 justify-content-center">
                 <div className="col-sm-4 forms container-fluid">
                     <h4>Select Your Engravings</h4>
-                    <Select options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne" className="m-3 form-dropdown"
+                    <Select 
+                        options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne" className="m-3 form-dropdown"
                     />
                     <Select
                         options={engravings} onChange={onChange} name="formTwo" className="m-3 form-dropdown"
                     />
-                    <button className="btn btn-primary btn-lg" onClick={onSubmit}>Submit</button>
                 </div>
             </div>
             <div className="results">
