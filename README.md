@@ -16,6 +16,10 @@ This app was initally build to solve a single, simple problem, but has expanded 
 
 If you'd like to make a suggestion, or create a pull request and add your own work to the project, please join our [Discord](https://discord.com/invite/x82dcfNcjw). This is where all discussion and planning for the project takes place.
 
+## Technologies in use
+
+Bootstrap, ReactJS, Redux
+
 
 ## Credits
 
