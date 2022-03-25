@@ -26,6 +26,14 @@
 	background-color: rgb(40, 75, 190);
 }
 
+.settings-gear {
+	transition: transform .4s ease-in-out;
+}
+
+.settings-gear:hover {
+	transform: rotateZ(15deg);
+}
+
 @media (min-width: 576px) {
 	.forms {
 		width: 400px;

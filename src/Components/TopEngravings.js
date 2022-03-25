@@ -2,21 +2,6 @@ import popular_builds from "../data/popular_builds";
 import engravings_list from "../data/engravings_list"
 import { useState, useEffect } from "react";
 
-
-
-const commonEngravings = [
-    "Grudge",
-    "Cursed Doll",
-    "Keen Blunt Weapon",
-    "Adrenaline",
-    "Master of Ambush",
-    "Spirit Absorption",
-    "Raid Captain",
-    "Hit Master",
-    "Precise Dagger",
-    "Awakening"
-]
-
 function TopEngravings() {
 
     const [bestEngravings, setBestEngravings] = useState([])

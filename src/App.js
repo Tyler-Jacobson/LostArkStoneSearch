@@ -5,6 +5,7 @@ import EngravingSeach from "./Components/EngravingSearch"
 import BuildsList from "./Components/BuildsList"
 import TopEngravings from "./Components/TopEngravings";
 import Nav from "./Components/Nav"
+import Settings from "./Components/Settings";
 import { useDispatch, useSelector } from "react-redux"
 import { addSavedBuild, setDarkMode } from "./actions";
 
@@ -49,6 +50,7 @@ function App() {
         <Route path="/top-engravings" element={<TopEngravings />} />
         <Route path="/builds-list" element={<BuildsList />} />
       </Routes>
+      <Settings />
     </div>
   );
 };

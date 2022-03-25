@@ -52,7 +52,7 @@ function EngravingSearch() {
             if (build.build_engravings.includes(selectedOptions.formOne.value) && build.build_engravings.includes(selectedOptions.formTwo.value)) {
                 const engravingOneImportance = build.build_engravings.findIndex((e) => e === selectedOptions.formOne.value)
                 const engravingTwoImportance = build.build_engravings.findIndex((e) => e === selectedOptions.formTwo.value)
-                console.log("ENG2IMP", engravingTwoImportance)
+                console.log("ENG2IMP", selectedOptions)
                 if (engravingOneImportance < engravingTwoImportance) {
                     return tempPerfectMatchList.push({
                         ...build,
@@ -103,16 +103,28 @@ function EngravingSearch() {
         }
     }
 
+    function hideSelectedEngraving(targetForm) {
+        // if (selectedOptions.formTwo === null) {
+        if (targetForm === null) {
+            return engravings
+        } else {
+            const engCopy = [...engravings]
+            const engIndex = engCopy.indexOf(targetForm)
+            engCopy.splice(engIndex, 1)
+            return engCopy
+        }
+    }
+
     return (
         <div className="container text-center engraving-search-component">
             <div className="row m-5 justify-content-center">
                 <div className="col-sm-4 forms container-fluid">
                     <h4>Select Your Engravings</h4>
                     <Select 
-                        options={engravings} onChange={(inc, e) => onChange(inc, e)} name="formOne" className="m-3 form-dropdown"
+                        options={hideSelectedEngraving(selectedOptions.formTwo)} onChange={(inc, e) => onChange(inc, e)} name="formOne" className="m-3 form-dropdown"
                     />
                     <Select
-                        options={engravings} onChange={onChange} name="formTwo" className="m-3 form-dropdown"
+                        options={hideSelectedEngraving(selectedOptions.formOne)} onChange={onChange} name="formTwo" className="m-3 form-dropdown"
                     />
                 </div>
             </div>

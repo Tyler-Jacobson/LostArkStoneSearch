@@ -22,3 +22,9 @@ export const setSearchBuildsForm = (state) => {
         payload: state
     }
 }
+export const settingsWindowOpen = (state) => {
+    return {
+        type: "SETTINGS_WINDOW_OPEN",
+        payload: state
+    }
+}
