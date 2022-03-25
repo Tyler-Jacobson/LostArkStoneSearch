@@ -34,9 +34,6 @@ function Nav() {
             <li className="nav-item">
               <a className="nav-link" href="https://discord.gg/x82dcfNcjw" target="_blank" rel="noreferrer">Discord</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="https://www.patreon.com/Tyler_Geovex" target="_blank" rel="noreferrer">Patreon</a>
-            </li>
           </ul>
         </div>
       </div>

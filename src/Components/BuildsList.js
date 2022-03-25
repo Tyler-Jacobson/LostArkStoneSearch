@@ -6,7 +6,7 @@ import { Tooltip, OverlayTrigger } from "react-bootstrap";
 
 const endGameEngravings = ["Grudge", "Cursed Doll"]
 
-const renderTooltip = (props) => (
+const renderTooltip = (props) => ( // this should be its own component, which can be passed any text
     <Tooltip id="button-tooltip" {...props}>
       This Engraving is generally considered low priority for tier-1 and tier-2 content, but becomes best in slot at end game
     </Tooltip>
