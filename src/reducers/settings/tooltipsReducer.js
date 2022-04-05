@@ -1,6 +1,6 @@
-const settingsWindowOpen = (state = false, action) => {
+const tooltipsReducer = (state = false, action) => {
     switch (action.type) {
-        case "SETTINGS_WINDOW_OPEN": {
+        case "SET_TOOLTIPS_ON": {
             return action.payload
         }
         default: {
@@ -8,4 +8,4 @@ const settingsWindowOpen = (state = false, action) => {
         }
     }
 }
-export default settingsWindowOpen;
+export default tooltipsReducer;
