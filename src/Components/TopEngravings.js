@@ -1,5 +1,5 @@
 import popular_builds from "../data/popular_builds";
-import engravings_list from "../data/engravings_list"
+import engravingsList from "../data/engravingsList"
 import { useState, useEffect } from "react";
 
 function TopEngravings() {
@@ -41,9 +41,9 @@ function TopEngravings() {
             })
         })
         const unpopularEngravings = []
-        engravings_list.forEach(engraving => {
-            if (!popularEngravingsFullList.includes(engraving)) {
-                unpopularEngravings.push(engraving)
+        engravingsList.forEach(engraving => {
+            if (!popularEngravingsFullList.includes(engraving.name)) {
+                unpopularEngravings.push(engraving.name)
             }
         })
         // console.log(unpopularEngravings)

@@ -1,6 +1,6 @@
-const engravingDescriptionsReducer = (state = false, action) => {
+const engravingDescriptionsReducer = (state = true, action) => {
     switch (action.type) {
-        case "SET_ENGRAVING_DESCRIPTIONS_ON": {
+        case "SET_ENGRAVING_DESCRIPTIONS": {
             return action.payload
         }
         default: {

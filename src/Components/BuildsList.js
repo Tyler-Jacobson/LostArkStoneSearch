@@ -3,14 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { addSavedBuild, removeSavedBuild, setSearchBuildsForm } from "../actions";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
+// import renderTooltip from "../helperFunctions/TooltipWithProps";
+import DisplayTooltip from "../helperFunctions/DisplayTooltip";
 
 const endGameEngravings = ["Grudge", "Cursed Doll"]
-
-const renderTooltip = (props) => ( // this should be its own component, which can be passed any text
-    <Tooltip id="button-tooltip" {...props}>
-      This Engraving is generally considered low priority for tier-1 and tier-2 content, but becomes best in slot at end game
-    </Tooltip>
-);
 
 function BuildsList() {
     const dispatch = useDispatch()
@@ -54,7 +50,9 @@ function BuildsList() {
                                                 if (!endGameEngravings.includes(engraving)) {
                                                     return <li className="list-group-item">{engraving}</li>
                                                 } else {
-                                                    return <li className="list-group-item">{engraving}<OverlayTrigger placement="right" delay={{ show: 0, hide: 200 }} overlay={renderTooltip}><span> 🛈</span></OverlayTrigger></li>
+                                                    return <li className="list-group-item">{engraving}
+                                                        {DisplayTooltip(`${engraving} is generally considered low priority for tier-1 and tier-2 content, but becomes best in slot at end game`, <span> 🛈</span>, true)}
+                                                    </li>
                                                 }
                                             })
                                         }
@@ -89,7 +87,10 @@ function BuildsList() {
                                                     if (!endGameEngravings.includes(engraving)) {
                                                         return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span></li>
                                                     } else {
-                                                        return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span><OverlayTrigger placement="right" delay={{ show: 0, hide: 200 }} overlay={renderTooltip}><span> 🛈</span></OverlayTrigger></li>
+                                                        return <li className="list-group-item">
+                                                            <span className={`prio-${index}`}>{engraving}</span>
+                                                            {DisplayTooltip(`${engraving} is generally considered low priority for tier-1 and tier-2 content, but becomes best in slot at end game`, <span> 🛈</span>, true)}
+                                                            </li>
                                                     }
                                                 })
                                             }
@@ -98,33 +99,35 @@ function BuildsList() {
                                 </div>
                             )
                         }) :
-                        popularBuilds.map(build => {
-                            if (build.build_name.toUpperCase().includes(searchBuildsRedux.toUpperCase())) {
-                                return (
-                                    <div className="col-md-6 col-lg-4 mb-3">
-                                        <div className="card">
-                                            <div className="card-body">
-                                                <h5 className="card-title">{build.build_name}</h5>
-                                                <p className="card-text">Primary: {build.primary_stat}<br />Secondary: {build.secondary_stat}</p>
-                                                <button className="btn btn-primary save-build-button" onClick={() => saveBuild(build)}>Save</button>
+                            popularBuilds.map(build => {
+                                if (build.build_name.toUpperCase().includes(searchBuildsRedux.toUpperCase())) {
+                                    return (
+                                        <div className="col-md-6 col-lg-4 mb-3">
+                                            <div className="card">
+                                                <div className="card-body">
+                                                    <h5 className="card-title">{build.build_name}</h5>
+                                                    <p className="card-text">Primary: {build.primary_stat}<br />Secondary: {build.secondary_stat}</p>
+                                                    <button className="btn btn-primary save-build-button" onClick={() => saveBuild(build)}>Save</button>
+                                                </div>
+                                                <ul className="list-group list-group-flush">
+                                                    {
+                                                        build.build_engravings.map((engraving, index) => {
+                                                            if (!endGameEngravings.includes(engraving)) {
+                                                                return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span></li>
+                                                            } else {
+                                                                return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span>
+                                                                {DisplayTooltip(`${engraving} is generally considered low priority for tier-1 and tier-2 content, but becomes best in slot at end game`, <span> 🛈</span>, true)}
+                                                                </li>
+                                                            }
+
+                                                        })
+                                                    }
+                                                </ul>
                                             </div>
-                                            <ul className="list-group list-group-flush">
-                                                {
-                                                    build.build_engravings.map((engraving, index) => {
-                                                        if (!endGameEngravings.includes(engraving)) {
-                                                            return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span></li>
-                                                        } else {
-                                                            return <li className="list-group-item"><span className={`prio-${index}`}>{engraving}</span><OverlayTrigger placement="right" delay={{ show: 0, hide: 200 }} overlay={renderTooltip}><span> 🛈</span></OverlayTrigger></li>
-                                                        }
-                                                        
-                                                    })
-                                                }
-                                            </ul>
                                         </div>
-                                    </div>
-                                )
-                            }
-                        })
+                                    )
+                                }
+                            })
                     }
                 </div>
             </div>
