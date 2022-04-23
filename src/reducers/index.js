@@ -1,14 +1,16 @@
 import { combineReducers } from "redux";
-import savedBuildsReducer from "./savedBuildsReducer"
-import darkmodeReducer from "./darkmodeReducer"
+import savedBuildsReducer from "./savedBuildsReducer";
+import darkmodeReducer from "./darkmodeReducer";
 import setSearchBuildsForm from "./setSearchBuildsForm";
-import settingsWindowReducer from "./settingsWindowOpen";
+import engravingDescriptionsReducer from "./settings/engravingDescriptionsReducer";
+import engravingPriorityReducer from "./settings/engravingPriorityReducer";
 
 const rootReducer = combineReducers({
     savedBuildsReducer,
     darkmodeReducer,
     setSearchBuildsForm,
-    settingsWindowReducer
+    engravingDescriptionsReducer,
+    engravingPriorityReducer
 })
 
-export default rootReducer
+export default rootReducer;

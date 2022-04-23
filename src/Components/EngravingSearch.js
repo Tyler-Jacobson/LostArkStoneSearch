@@ -4,18 +4,21 @@ import Select from 'react-select';
 import '../css/bootstrap-night.css';
 import '../css/toolkit.css';
 import popularBuilds from "../data/popular_builds";
-import engravingsList from "../data/engravings_list";
+import engravingsList from "../data/engravingsList";
 import intToNth from "../helperFunctions/intToNth";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
+import DisplayTooltip from "../helperFunctions/DisplayTooltip";
 
-function nameToEngravingObject(name) {
-    return { label: name, value: name }
+function nameToEngravingObject(name, description) {
+    return { label: name, value: name, description: description }
 }
+
+const engravingPriorityTooltip = "This number is the Engraving Priority. #1 and Core engravings are the most important for a build, while lower priorities such as #4 and #5 are less important early but still needed later in tier 3 content";
 
 const engravings = []
 
-engravingsList.forEach(engraingName => {
-    engravings.push(nameToEngravingObject(engraingName))
+engravingsList.forEach(engraving => {
+    engravings.push(nameToEngravingObject(engraving.name, engraving.description))
 })
 
 const defaultSelectedOptions = { formOne: null, formTwo: null }
@@ -23,6 +26,8 @@ const defaultSelectedOptions = { formOne: null, formTwo: null }
 function EngravingSearch() {
 
     const darkModeRedux = useSelector(state => state.darkmodeReducer)
+    const engravingDescriptionsRedux = useSelector(state => state.engravingDescriptionsReducer)
+    const engravingPriorityTooltipsRedux = useSelector(state => state.engravingPriorityReducer)
 
     const [selectedOptions, setSelectedOptions] = useState(defaultSelectedOptions)
     const [perfectMatchList, setPerfectMatchList] = useState([])
@@ -30,19 +35,18 @@ function EngravingSearch() {
     const [noMatches, setNoMatches] = useState(false)
 
     const onChange = (incomingSelected, e) => {
+        console.log("INC SELECTED", incomingSelected)
         setSelectedOptions({
             ...selectedOptions,
             [e.name]: incomingSelected
         })
     }
-    
+
     useEffect(() => {
-            if (selectedOptions.formOne && selectedOptions.formOne.value  && selectedOptions.formTwo && selectedOptions.formTwo.value){
-                onSubmit()
-            }
-        },
-        [selectedOptions]
-    )
+        if (selectedOptions.formOne && selectedOptions.formOne.value && selectedOptions.formTwo && selectedOptions.formTwo.value) {
+            onSubmit()
+        }
+    }, [selectedOptions])
 
     const onSubmit = () => {
         const tempPerfectMatchList = [];
@@ -59,7 +63,9 @@ function EngravingSearch() {
                         matchedEngravingOne: selectedOptions.formOne.value,
                         matchedEngravingTwo: selectedOptions.formTwo.value,
                         engravingPriorityOne: parseInt(engravingOneImportance),
-                        engravingPriorityTwo: parseInt(engravingTwoImportance)
+                        engravingPriorityTwo: parseInt(engravingTwoImportance),
+                        engravingDescriptionOne: selectedOptions.formOne.description,
+                        engravingDescriptionTwo: selectedOptions.formTwo.description
                     })
                 } else {
                     return tempPerfectMatchList.push({
@@ -67,7 +73,9 @@ function EngravingSearch() {
                         matchedEngravingOne: selectedOptions.formTwo.value,
                         matchedEngravingTwo: selectedOptions.formOne.value,
                         engravingPriorityOne: parseInt(engravingTwoImportance),
-                        engravingPriorityTwo: parseInt(engravingOneImportance)
+                        engravingPriorityTwo: parseInt(engravingOneImportance),
+                        engravingDescriptionOne: selectedOptions.formTwo.description,
+                        engravingDescriptionTwo: selectedOptions.formOne.description
                     })
                 }
 
@@ -77,7 +85,8 @@ function EngravingSearch() {
                 return tempPartialMatchList.push({
                     ...build,
                     matchedEngraving: selectedOptions.formOne.value,
-                    engravingPriority: parseInt(importance)
+                    engravingPriority: parseInt(importance),
+                    engravingDescription: selectedOptions.formOne.description
                 })
             } else if (build.build_engravings.includes(selectedOptions.formTwo.value)) {
                 const importance = build.build_engravings.findIndex((e) => e === selectedOptions.formTwo.value)
@@ -85,7 +94,8 @@ function EngravingSearch() {
                 return tempPartialMatchList.push({
                     ...build,
                     matchedEngraving: selectedOptions.formTwo.value,
-                    engravingPriority: parseInt(importance)
+                    engravingPriority: parseInt(importance),
+                    engravingDescription: selectedOptions.formTwo.description
                 })
             }
         })
@@ -120,7 +130,7 @@ function EngravingSearch() {
             <div className="row m-5 justify-content-center">
                 <div className="col-sm-4 forms container-fluid">
                     <h4>Select Your Engravings</h4>
-                    <Select 
+                    <Select
                         options={hideSelectedEngraving(selectedOptions.formTwo)} onChange={(inc, e) => onChange(inc, e)} name="formOne" className="m-3 form-dropdown"
                     />
                     <Select
@@ -141,14 +151,22 @@ function EngravingSearch() {
                                     </div>
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item">
-                                            <h4>{build.matchedEngravingOne} <span className={`badge importance importance-${build.engravingPriorityOne}`}>
-                                                {intToNth(build.engravingPriorityOne)}
-                                            </span></h4>
+                                            <h4>{DisplayTooltip(`${build.engravingDescriptionOne}`, <span>{build.matchedEngravingOne}</span>, engravingDescriptionsRedux)}
+                                                {DisplayTooltip(`${engravingPriorityTooltip}`,
+                                                    <span className={`badge importance importance-${build.engravingPriorityOne} ms-2`}>
+                                                        {intToNth(build.engravingPriorityOne)}
+                                                    </span>,
+                                                    engravingPriorityTooltipsRedux)}
+                                            </h4>
                                         </li>
                                         <li className="list-group-item">
-                                            <h4>{build.matchedEngravingTwo} <span className={`badge importance importance-${build.engravingPriorityTwo}`}>
-                                                {intToNth(build.engravingPriorityTwo)}
-                                            </span></h4>
+                                            <h4>{DisplayTooltip(`${build.engravingDescriptionTwo}`, <span>{build.matchedEngravingTwo}</span>, engravingDescriptionsRedux)}
+                                                {DisplayTooltip(`${engravingPriorityTooltip}`,
+                                                    <span className={`badge importance importance-${build.engravingPriorityTwo} ms-2`}>
+                                                        {intToNth(build.engravingPriorityTwo)}
+                                                    </span>,
+                                                    engravingPriorityTooltipsRedux)}
+                                            </h4>
                                         </li>
                                     </ul>
                                 </div>
@@ -168,9 +186,17 @@ function EngravingSearch() {
                                     </div>
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item">
-                                            <h4>{build.matchedEngraving} <span className={`badge importance importance-${build.engravingPriority}`}>
-                                                {intToNth(build.engravingPriority)}
-                                            </span></h4>
+                                            <h4>{DisplayTooltip(`${build.engravingDescription}`,
+                                                    <span>
+                                                        {build.matchedEngraving}
+                                                    </span>,
+                                                engravingDescriptionsRedux)}
+                                                {DisplayTooltip(`${engravingPriorityTooltip}`,
+                                                    <span className={`badge importance importance-${build.engravingPriority} ms-2`}>
+                                                        {intToNth(build.engravingPriority)}
+                                                    </span>,
+                                                    engravingPriorityTooltipsRedux)}
+                                            </h4>
                                         </li>
                                     </ul>
                                 </div>

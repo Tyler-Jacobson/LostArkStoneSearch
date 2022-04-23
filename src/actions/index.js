@@ -22,9 +22,15 @@ export const setSearchBuildsForm = (state) => {
         payload: state
     }
 }
-export const settingsWindowOpen = (state) => {
+export const setEngravingDescriptions = (state) => {
     return {
-        type: "SETTINGS_WINDOW_OPEN",
-        payload: state
+        type: "SET_ENGRAVING_DESCRIPTIONS",
+        payload: state 
+    }
+}
+export const setEngravingPriorityTooltips = (state) => {
+    return {
+        type: "SET_ENGRAVING_PRIORITY_TOOLTIPS",
+        payload: state 
     }
 }
