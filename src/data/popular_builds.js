@@ -181,6 +181,19 @@ const popular_builds = [
         build_engravings: [root.Reflux, root.Precise_Dagger, root.Hit_Master, root.Adrenaline , root.All_Out_Attack, root.Grudge, root.Cursed_Doll],
         primary_stat: "Crit",
         secondary_stat: "Swiftness"
-    }
+    },
+    {
+        build_name: "Pinnacle Glavier",
+        build_engravings: [root.Pinnacle, root.Keen_Blunt_Weapon, root.Increases_Mass, root.Awakening, root.Grudge, root.Cursed_Doll],
+        primary_stat: "Specialization",
+        secondary_stat: "Swiftness"
+    },
+    {
+        build_name: "Control Glavier",
+        build_engravings: [root.Control, root.Master_of_Ambush, root.Adrenaline, root.Raid_Captain , root.Keen_Blunt_Weapon, root.Grudge, root.Cursed_Doll],
+        primary_stat: "Crit",
+        secondary_stat: "Swiftness"
+    },
+
 ]
 export default popular_builds;

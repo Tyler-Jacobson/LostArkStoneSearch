@@ -55,7 +55,7 @@ function TopEngravings() {
 
     return (
         <div className="container text-center top-engravings-container d-sm-flex align-items-center flex-sm-column mt-3">
-            <h5 className="note">Note: 90% of this app has been build based on user suggestions. If you have a suggestion, feel free to join my <a className="discord-link" href="https://discord.gg/x82dcfNcjw" alt="Discord link" target="_blank" rel="noreferrer">Discord</a></h5>
+            <h5 className="note">Note: 90% of this app has been built based on user suggestions. If you have a suggestion, feel free to join my <a className="discord-link" href="https://discord.gg/x82dcfNcjw" alt="Discord link" target="_blank" rel="noreferrer">Discord</a></h5>
             <h2>Top 10 Most Popular Engravings</h2>
             <ul className="col-md-6 list-group">
                 {

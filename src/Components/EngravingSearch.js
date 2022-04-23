@@ -13,6 +13,8 @@ function nameToEngravingObject(name, description) {
     return { label: name, value: name, description: description }
 }
 
+const engravingPriorityTooltip = "This number is the Engraving Priority. #1 and Core engravings are the most important for a build, while lower priorities such as #4 and #5 are less important early but still needed later in tier 3 content";
+
 const engravings = []
 
 engravingsList.forEach(engraving => {
@@ -25,6 +27,7 @@ function EngravingSearch() {
 
     const darkModeRedux = useSelector(state => state.darkmodeReducer)
     const engravingDescriptionsRedux = useSelector(state => state.engravingDescriptionsReducer)
+    const engravingPriorityTooltipsRedux = useSelector(state => state.engravingPriorityReducer)
 
     const [selectedOptions, setSelectedOptions] = useState(defaultSelectedOptions)
     const [perfectMatchList, setPerfectMatchList] = useState([])
@@ -149,18 +152,20 @@ function EngravingSearch() {
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item">
                                             <h4>{DisplayTooltip(`${build.engravingDescriptionOne}`, <span>{build.matchedEngravingOne}</span>, engravingDescriptionsRedux)}
-                                                <span className={`badge importance importance-${build.engravingPriorityOne} ms-xxl-3`}>
-                                                    {intToNth(build.engravingPriorityOne)}
-                                                </span>
+                                                {DisplayTooltip(`${engravingPriorityTooltip}`,
+                                                    <span className={`badge importance importance-${build.engravingPriorityOne} ms-2`}>
+                                                        {intToNth(build.engravingPriorityOne)}
+                                                    </span>,
+                                                    engravingPriorityTooltipsRedux)}
                                             </h4>
                                         </li>
-
-
                                         <li className="list-group-item">
                                             <h4>{DisplayTooltip(`${build.engravingDescriptionTwo}`, <span>{build.matchedEngravingTwo}</span>, engravingDescriptionsRedux)}
-                                                <span className={`badge importance importance-${build.engravingPriorityTwo} ms-xxl-3`}>
-                                                    {intToNth(build.engravingPriorityTwo)}
-                                                </span>
+                                                {DisplayTooltip(`${engravingPriorityTooltip}`,
+                                                    <span className={`badge importance importance-${build.engravingPriorityTwo} ms-2`}>
+                                                        {intToNth(build.engravingPriorityTwo)}
+                                                    </span>,
+                                                    engravingPriorityTooltipsRedux)}
                                             </h4>
                                         </li>
                                     </ul>
@@ -181,10 +186,16 @@ function EngravingSearch() {
                                     </div>
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item">
-                                            <h4>{DisplayTooltip(`${build.engravingDescription}`, <span>{build.matchedEngraving}</span>, engravingDescriptionsRedux)}
-                                                <span className={`badge importance importance-${build.engravingPriority} ms-xxl-3`}>
-                                                    {intToNth(build.engravingPriority)}
-                                                </span>
+                                            <h4>{DisplayTooltip(`${build.engravingDescription}`,
+                                                    <span>
+                                                        {build.matchedEngraving}
+                                                    </span>,
+                                                engravingDescriptionsRedux)}
+                                                {DisplayTooltip(`${engravingPriorityTooltip}`,
+                                                    <span className={`badge importance importance-${build.engravingPriority} ms-2`}>
+                                                        {intToNth(build.engravingPriority)}
+                                                    </span>,
+                                                    engravingPriorityTooltipsRedux)}
                                             </h4>
                                         </li>
                                     </ul>

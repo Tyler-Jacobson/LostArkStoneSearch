@@ -28,3 +28,9 @@ export const setEngravingDescriptions = (state) => {
         payload: state 
     }
 }
+export const setEngravingPriorityTooltips = (state) => {
+    return {
+        type: "SET_ENGRAVING_PRIORITY_TOOLTIPS",
+        payload: state 
+    }
+}

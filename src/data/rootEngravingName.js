@@ -71,7 +71,9 @@ const rootEngravingName = {
     Esoteric_Flurry: "Esoteric Flurry",
     Deathblow: "Deathblow",
     Esoteric_Skill_Enhancement: "Esoteric Skill Enhancement",
-    First_Intention: "First Intention"
+    First_Intention: "First Intention",
+    Pinnacle: "Pinnacle",
+    Control: "Control"
 }
 
 export default rootEngravingName;

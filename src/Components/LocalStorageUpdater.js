@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addSavedBuild, setDarkMode, setEngravingDescriptions } from "../actions";
+import { addSavedBuild, setDarkMode, setEngravingDescriptions, setEngravingPriorityTooltips } from "../actions";
 
 function LocalStorageUpdater() {
 
@@ -8,6 +8,7 @@ function LocalStorageUpdater() {
     const savedBuildsRedux = useSelector(state => state.savedBuildsReducer)
     const darkModeRedux = useSelector(state => state.darkmodeReducer)
     const engravingDescriptionsRedux = useSelector(state => state.engravingDescriptionsReducer)
+    const engravingPriorityTooltipsRedux = useSelector(state => state.engravingPriorityReducer)
 
     useEffect(() => {
         if ("buildsList" in localStorage) {
@@ -24,6 +25,10 @@ function LocalStorageUpdater() {
             const engravingDescriptions = JSON.parse(localStorage.getItem("engravingDescriptions"))
             dispatch(setEngravingDescriptions(engravingDescriptions))
         }
+        if ("engravingPriorityTooltips" in localStorage) {
+            const engravingPriorityTooltip = JSON.parse(localStorage.getItem("engravingPriorityTooltips"))
+            dispatch(setEngravingPriorityTooltips(engravingPriorityTooltip))
+        }
 
     }, [])
 
@@ -39,6 +44,9 @@ function LocalStorageUpdater() {
         localStorage.setItem("engravingDescriptions", JSON.stringify(engravingDescriptionsRedux))
     }, [engravingDescriptionsRedux])
 
+    useEffect(() => {
+        localStorage.setItem("engravingPriorityTooltips", JSON.stringify(engravingPriorityTooltipsRedux))
+    }, [engravingPriorityTooltipsRedux])
 
     return ( // does a component actually need a return value?
         <></>
