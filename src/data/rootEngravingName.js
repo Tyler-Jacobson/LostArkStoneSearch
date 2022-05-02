@@ -26,7 +26,7 @@ const rootEngravingName = {
     MP_Efficiency_Increase: "MP Efficiency Increase",
     Magick_Stream: "Magick Stream",
     Master_Brawler: "Master Brawler",
-    Master_of_Ambush: "Master of Ambush",
+    Master_of_Ambush: "Ambush Master",
     Master_of_Escape: "Master of Escape",
     Masters_Tenacity: "Master's Tenacity",
     Max_MP_Increase: "Max MP Increase",
