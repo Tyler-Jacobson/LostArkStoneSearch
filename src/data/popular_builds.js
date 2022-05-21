@@ -194,6 +194,17 @@ const popular_builds = [
         primary_stat: "Crit",
         secondary_stat: "Swiftness"
     },
-
+    {
+        build_name: "Hammer of Rage Destroyer",
+        build_engravings: [root.Rage_Hammer, root.Super_Charge, root.Master_Brawler, root.Keen_Blunt_Weapon, root.Spirit_Absorption, root.Grudge, root.Cursed_Doll],
+        primary_stat: "Crit",
+        secondary_stat: "Swiftness | Specialization"
+    },
+    {
+        build_name: "Gravity Training Destroyer",
+        build_engravings: [root.Gravity_Training, root.Barricade, root.Master_Brawler, root.Spirit_Absorption, root.Grudge, root.Cursed_Doll],
+        primary_stat: "Specialization",
+        secondary_stat: "Crit"
+    }
 ]
 export default popular_builds;
