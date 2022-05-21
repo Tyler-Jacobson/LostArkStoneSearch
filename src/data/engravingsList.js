@@ -74,8 +74,10 @@ import root from "./rootEngravingName";
     { name: root.Deathblow, description: "Striker Class Engraving. Esoteric skills consume all orbs and deal additional damage per orb consumed. +1 max available orbs"},
     { name: root.Esoteric_Skill_Enhancement, description: "Wardancer Class Engraving. Esoteric skills deal additional damage per orb you have. +1 max available orbs"},
     { name: root.First_Intention, description: "Wardancer Class Engraving. Increases damage dealt. Can no longer gain elemental meter"},
-    { name: root.Pinnacle, description: "Glavier Class Engraving. Gives increased Atk/Move speed, damage, and crit when swapping weapons"},
-    { name: root.Control, description: "Glavier Class Engraving. Disables secondary weapon. All base damage from primary weapon skills are increased"},
+    { name: root.Pinnacle, description: "Glaivier Class Engraving. Gives increased Atk/Move speed, damage, and crit when swapping weapons"},
+    { name: root.Control, description: "Glaivier Class Engraving. Disables secondary weapon. All base damage from primary weapon skills are increased"},
+    { name: root.Rage_Hammer, description: "Destroyer Class Engraving. Grants extra Crit Rate and Crit Damage based on the number of Cores consumed when using Gravity Release skills"},
+    { name: root.Gravity_Training, description: "Destroyer Class Engraving. Increases Gravity Meter regeneration and increases basic attack damage and Crit Rate during Hypergravity"}
   ]
 
   export default engravingDetails;
